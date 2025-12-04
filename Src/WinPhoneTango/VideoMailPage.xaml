@@ -1,0 +1,72 @@
+﻿<app:TangoEventPageBase
+  x:Class="WinPhoneTango.VideoMailPage"
+  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+  xmlns:app="clr-namespace:WinPhoneTango"
+  xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+  xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+  FontFamily="{StaticResource TangoFontFamilyNormal}"
+  Foreground="{StaticResource TangoForeground}"
+  SupportedOrientations="Portrait" Orientation="Portrait"
+  mc:Ignorable="d" d:DesignHeight="800" d:DesignWidth="480">
+
+  <app:TangoEventPageBase.Resources>
+    <Style x:Key="VideoMailListStyle" TargetType="ListView">
+      <Setter Property="HorizontalAlignment" Value="Left"/>
+      <Setter Property="VerticalAlignment" Value="Top"/>
+      <Setter Property="Height" Value="650"/>
+      <Setter Property="Width" Value="480"/>
+      <Setter Property="Background" Value="Transparent"/>
+    </Style>
+
+    <ItemsPanelTemplate x:Key="listItemPanelTemplate">
+      <ItemsWrapGrid Orientation="Horizontal"/>
+    </ItemsPanelTemplate>
+
+    <DataTemplate x:Key="listItemTemplate">
+      <StackPanel>
+        <TextBlock FontSize="26" Text="{Binding Name}" />
+        <TextBlock Foreground="{Binding LastCallColor}" Text="{Binding LastCallText}" />
+      </StackPanel>
+    </DataTemplate>
+  </app:TangoEventPageBase.Resources>
+
+  <!--LayoutRoot is the root grid where all page content is placed-->
+  <Grid x:Name="LayoutRoot">
+    <Grid.RowDefinitions>
+      <RowDefinition Height="Auto"/>
+      <RowDefinition Height="*"/>
+    </Grid.RowDefinitions>
+
+    <!--TitlePanel contains the name of the application and page title-->
+    <StackPanel x:Name="TitlePanel" Grid.Row="0" Margin="0,0,0,-20">
+      <StackPanel Orientation="Horizontal">
+        <Image Source="ms-appx:///WinPhoneTango/Resources/logo_small.png" HorizontalAlignment="Left" VerticalAlignment="Top" Stretch="None"></Image>
+        <Rectangle Width="480" Fill="{StaticResource TangoOrangeBrush}" HorizontalAlignment="Left" VerticalAlignment="Stretch"></Rectangle>
+      </StackPanel>
+      <TextBlock x:Name="PageTitle" Text="VIDEO MAIL"
+                 Style="{StaticResource TangoTitleStyle}"
+                 HorizontalAlignment="Left" VerticalAlignment="Top" />
+    </StackPanel>
+
+    <!--ContentPanel - place additional content here-->
+    <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,24,12,0">
+      <StackPanel>
+        <Grid>
+          <TextBlock HorizontalAlignment="Left">STORAGE</TextBlock>
+          <TextBlock HorizontalAlignment="Center">6 VIDEO MAILS</TextBlock>
+          <TextBlock HorizontalAlignment="Right">10 MAX</TextBlock>
+        </Grid>
+        <Border Margin="0,5,0,24" Width="480" Height="24"
+                Background="Gray" BorderThickness="0">
+          <Rectangle Fill="Red" Width="290" HorizontalAlignment="Left"/>
+        </Border>
+        <ListView x:Name="listSelectorMail"
+                  Style="{StaticResource VideoMailListStyle}"
+                  ItemsPanel="{StaticResource listItemPanelTemplate}"
+                  ItemTemplate="{StaticResource listItemTemplate}" SelectionChanged="listSelectorMail_SelectionChanged" />
+      </StackPanel>
+    </Grid>
+  </Grid>
+
+</app:TangoEventPageBase>

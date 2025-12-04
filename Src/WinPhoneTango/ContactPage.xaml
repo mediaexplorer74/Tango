@@ -1,0 +1,103 @@
+﻿<app:TangoEventPageBase
+  x:Class="WinPhoneTango.ContactPage"
+  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+  xmlns:app="clr-namespace:WinPhoneTango"
+  xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+  xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+  mc:Ignorable="d" d:DesignWidth="480" d:DesignHeight="800"
+  FontFamily="{StaticResource TangoFontFamilyNormal}"
+  Foreground="{StaticResource TangoForeground}"
+  Background="{StaticResource TangoBackground}"
+  SupportedOrientations="Portrait"  Orientation="Portrait">
+
+  <app:TangoEventPageBase.Resources>
+    <Style x:Key="ContactListStyle" TargetType="ListView">
+      <Setter Property="HorizontalAlignment" Value="Left"/>
+      <Setter Property="VerticalAlignment" Value="Top"/>
+      <Setter Property="Margin" Value="12,0,12,0"/>
+      <Setter Property="Height" Value="566"/>
+      <Setter Property="Width" Value="432"/>
+      <Setter Property="Background" Value="Transparent"/>
+    </Style>
+
+    <DataTemplate x:Key="countListHeader">
+      <Border Background="Purple">
+        <StackPanel Orientation="Horizontal">
+          <TextBlock Text="Contact count = " />
+          <TextBlock Text ="{Binding Path=Items.Count}"/>
+        </StackPanel>
+      </Border>
+    </DataTemplate>
+
+    <DataTemplate x:Key="listItemTemplate">
+      <StackPanel Orientation="Horizontal" Margin="0,5,0,5" Height="64" Width="432"
+                  Visibility="{Binding Visibility}">
+        <Image Stretch="UniformToFill" Width="64" Height="64"
+               Source="{Binding Photo}" />
+        <TextBlock Text="{Binding Name}"
+                   FontSize="40" Width="305" Margin="20,0,6,0"
+                   FontFamily="Segoe UI Light"
+                   VerticalAlignment="Center" />
+        <Image Stretch="None" Visibility="{Binding TangoIconVisible}"
+               Source="ms-appx:///WinPhoneTango/Resources/tango_user_icon.png" />
+      </StackPanel>
+    </DataTemplate>
+  </app:TangoEventPageBase.Resources>
+
+  <!--LayoutRoot is the root grid where all page content is placed-->
+  <Grid x:Name="LayoutRoot">
+    <Grid.RowDefinitions>
+      <RowDefinition Height="Auto"/>
+      <RowDefinition Height="*"/>
+    </Grid.RowDefinitions>
+    <StackPanel x:Name="TitlePanel" Grid.Row="0" Margin="0,0,0,-20">
+      <StackPanel Orientation="Horizontal">
+        <Image Source="ms-appx:///WinPhoneTango/Resources/logo_small.png" HorizontalAlignment="Left" VerticalAlignment="Top" Stretch="None"></Image>
+        <Rectangle Width="480" Fill="{StaticResource TangoOrangeBrush}" HorizontalAlignment="Left" VerticalAlignment="Stretch"></Rectangle>
+      </StackPanel>
+      <TextBlock Text="{Binding Localizedresources.contacts_title, Source={StaticResource LocalizedStrings}}"
+                 x:Name="PageTitle" Style="{StaticResource TangoTitleStyle}"
+                 HorizontalAlignment="Left" VerticalAlignment="Top" />
+      <TextBox x:Name="textBoxSearch" Visibility="Collapsed" LostFocus="textBoxSearch_LostFocus"
+               TextChanged="textBoxSearch_TextChanged" />
+    </StackPanel>
+
+    <!--Pivot Control-->
+    <Pivot Name="pivotContactsType" Title="" Grid.Row="1"
+            SelectionChanged="pivotContactsType_SelectionChanged" Margin="0,5,0,0">
+      <!--Pivot item all contacts-->
+      <PivotItem Header="{Binding Localizedresources.contacts_all, Source={StaticResource LocalizedStrings}}">
+        <Grid>
+          <ListView x:Name="listSelectorAll"
+                    Style="{StaticResource ContactListStyle}"
+                    ItemTemplate="{StaticResource listItemTemplate}"
+                    SelectionChanged="listSelectorAll_SelectionChanged" />
+        </Grid>
+      </PivotItem>
+
+      <!--Pivot item tango contacts-->
+      <PivotItem Header="{Binding Localizedresources.contacts_tango, Source={StaticResource LocalizedStrings}}">
+        <Grid>
+          <ListView x:Name="listSelectorTango"
+                    Style="{StaticResource ContactListStyle}"
+                    ItemTemplate="{StaticResource listItemTemplate}"
+                    SelectionChanged="listSelectorTango_SelectionChanged" />
+        </Grid>
+      </PivotItem>
+    </Pivot>
+
+    <ProgressBar Grid.Row="1" Height="8" HorizontalAlignment="Left"
+                 Margin="10,20,0,0" Name="waitingBar" Visibility="Collapsed"
+                 VerticalAlignment="Top" Width="454"
+                 IsIndeterminate="True" />
+    <TextBlock Grid.Row="1" x:Name="noContactText" FontSize="22" Visibility="Collapsed"
+               Text="{Binding Localizedresources.no_contacts_msg, Source={StaticResource LocalizedStrings}}"
+               Height="Auto" TextTrimming="None" TextWrapping="Wrap"
+               Width="456" VerticalAlignment="Top" Margin="0,140,0,0"/>
+    <TextBlock Grid.Row="1" x:Name="noSearchResultText" FontSize="22" Visibility="Collapsed"
+               Text="{Binding Localizedresources.no_search_result, Source={StaticResource LocalizedStrings}}"
+               Height="Auto" TextTrimming="None" TextWrapping="Wrap"
+               Width="456" VerticalAlignment="Top" Margin="0,140,0,0"/>
+  </Grid>
+</app:TangoEventPageBase>

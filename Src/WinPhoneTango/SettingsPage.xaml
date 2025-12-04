@@ -1,0 +1,72 @@
+﻿<app:TangoEventPageBase
+  x:Class="WinPhoneTango.SettingsPage"
+  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+  xmlns:app="clr-namespace:WinPhoneTango"
+  xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+  xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+  FontFamily="{StaticResource TangoFontFamilyNormal}"
+  Foreground="{StaticResource TangoForeground}"
+  SupportedOrientations="Portrait" Orientation="Portrait"
+  mc:Ignorable="d" d:DesignHeight="800" d:DesignWidth="480">
+
+  <!--LayoutRoot is the root grid where all page content is placed-->
+  <Grid x:Name="LayoutRoot">
+    <Grid.RowDefinitions>
+      <RowDefinition Height="Auto"/>
+      <RowDefinition Height="*"/>
+    </Grid.RowDefinitions>
+
+    <!--TitlePanel contains the name of the application and page title-->
+    <StackPanel x:Name="TitlePanel" Grid.Row="0" Margin="0,0,0,-20">
+      <StackPanel Orientation="Horizontal">
+        <Image Source="ms-appx:///WinPhoneTango/Resources/logo_small.png" HorizontalAlignment="Left" VerticalAlignment="Top" Stretch="None"></Image>
+        <Rectangle Width="480" Fill="{StaticResource TangoOrangeBrush}" HorizontalAlignment="Left" VerticalAlignment="Stretch"></Rectangle>
+      </StackPanel>
+      <TextBlock Text="{Binding Localizedresources.settings_title, Source={StaticResource LocalizedStrings}}"
+                 x:Name="PageTitle" Style="{StaticResource TangoTitleStyle}"
+                 HorizontalAlignment="Left" VerticalAlignment="Top" />
+    </StackPanel>
+
+    <!--ContentPanel - place additional content here-->
+    <Grid x:Name="ContentPanel" Grid.Row="1" Margin="24,30,24,0">
+      <StackPanel>
+        <TextBlock x:Name="nameText" FontSize="26">John Smith</TextBlock>
+        <TextBlock x:Name="phoneText" FontSize="26">+1(415) 555-1212</TextBlock>
+        <TextBlock x:Name="emailText" FontSize="26">johnsmith@gmail.com</TextBlock>
+        <StackPanel Margin="0,60,0,0" Orientation="Horizontal"
+                    Name="panelAlerts" Visibility="Collapsed">
+          <Image Stretch="None" VerticalAlignment="Top" Margin="0,6,6,0"
+                 Source="ms-appx:///WinPhoneTango/Resources/icon_alert.png" />
+          <StackPanel>
+            <TextBlock x:Name="alertTitleText" FontWeight="Bold" FontSize="28"
+                       Text="Alert Name Goes Here" />
+            <TextBlock x:Name="alertDescText" FontSize="22" Foreground="DarkGray"
+                       Text="Description information for alert goes here"
+                       Height="Auto" TextTrimming="None" TextWrapping="Wrap"
+                       Width="420"/>
+          </StackPanel>
+        </StackPanel>
+        <!-- remove tips button for htc release to fix a MS raised issue -->
+        <!-- Button x:Name="buttonTips" Margin="0,60,0,0" Click="buttonTips_Click"
+                Content="{Binding Localizedresources.tips_button, Source={StaticResource LocalizedStrings}}" /-->
+      </StackPanel>
+      <StackPanel VerticalAlignment="Bottom">
+        <TextBlock Foreground="Gray" HorizontalAlignment="Center"
+                   Text="{Binding Localizedresources.copyright, Source={StaticResource LocalizedStrings}}" />
+        <TextBlock Foreground="Gray" HorizontalAlignment="Center">
+          <TextBlock.Inlines>
+            <Run Text="{Binding Localizedresources.version, Source={StaticResource LocalizedStrings}}"/>
+            <Run x:Name="version" Text=""/>
+          </TextBlock.Inlines>
+        </TextBlock>
+      </StackPanel>
+
+      <Button x:Name="buttonProfileEdit" Margin="0,15,0,0"
+              Padding="15,15,15,15"
+              VerticalAlignment="Top" HorizontalAlignment="Right"
+              Click="buttonProfileEdit_Click" Content="Edit Profile" />
+    </Grid>
+  </Grid>
+
+</app:TangoEventPageBase>

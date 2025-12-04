@@ -1,0 +1,434 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProjectGuid>{DBBB238C-295D-466C-A0DF-1F5B079C2C33}</ProjectGuid>
+    <OutputType>AppContainerExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>WinPhoneTango</RootNamespace>
+    <AssemblyName>WinPhoneTango</AssemblyName>
+    <DefaultLanguage>en-US</DefaultLanguage>
+    <LangVersion>latest</LangVersion>
+    <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
+    <TargetPlatformVersion Condition=" '$(TargetPlatformVersion)' == '' ">10.0.19041.0</TargetPlatformVersion>
+    <TargetPlatformMinVersion>10.0.15063.0</TargetPlatformMinVersion>
+    <MinimumVisualStudioVersion>14</MinimumVisualStudioVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{A5A43C5B-DE2A-4C0C-9213-0A381AF9435A};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WindowsXamlEnableOverview>true</WindowsXamlEnableOverview>
+    <AppxPackageSigningEnabled>True</AppxPackageSigningEnabled>
+    <PackageCertificateThumbprint>292D8FC10BEF1045E01E948AEEAA849F4D9AB0A5</PackageCertificateThumbprint>
+    <PackageCertificateKeyFile>WinPhoneTango_TemporaryKey.pfx</PackageCertificateKeyFile>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <Optimize>true</Optimize>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+    <UseDotNetNativeToolchain>true</UseDotNetNativeToolchain>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|ARM'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\ARM\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>ARM</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|ARM'">
+    <OutputPath>bin\ARM\Release\</OutputPath>
+    <DefineConstants>TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <Optimize>true</Optimize>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>ARM</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+    <UseDotNetNativeToolchain>true</UseDotNetNativeToolchain>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|ARM64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\ARM64\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>ARM64</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+    <UseDotNetNativeToolchain>true</UseDotNetNativeToolchain>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|ARM64'">
+    <OutputPath>bin\ARM64\Release\</OutputPath>
+    <DefineConstants>TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <Optimize>true</Optimize>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>ARM64</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+    <UseDotNetNativeToolchain>true</UseDotNetNativeToolchain>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <Optimize>true</Optimize>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+    <UseDotNetNativeToolchain>true</UseDotNetNativeToolchain>
+  </PropertyGroup>
+  <PropertyGroup>
+    <RestoreProjectStyle>PackageReference</RestoreProjectStyle>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AppManager.cs" />
+    <Compile Include="AudioVideoCallPage.xaml.cs">
+      <DependentUpon>AudioVideoCallPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CallBackManager.cs" />
+    <Compile Include="CallHistoryPage.xaml.cs">
+      <DependentUpon>CallHistoryPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ComTestPage.xaml.cs">
+      <DependentUpon>ComTestPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ContactPage.xaml.cs">
+      <DependentUpon>ContactPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ContactsFilter.cs" />
+    <Compile Include="CountrySelectorPage.xaml.cs">
+      <DependentUpon>CountrySelectorPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CustomThemeColorHelper.cs" />
+    <Compile Include="DataManager.cs" />
+    <Compile Include="Data\GroupBackgroundBrushColorConverter.cs" />
+    <Compile Include="Data\GroupForegroundBrushColorConverter.cs" />
+    <Compile Include="DisplayableContact.cs" />
+    <Compile Include="DisplayableInviteSelection.cs" />
+    <Compile Include="DisplayableMainMenuItem.cs" />
+    <Compile Include="EngineCom.cs" />
+    <Compile Include="EventManager.cs" />
+    <Compile Include="IEventCallback.cs" />
+    <Compile Include="INavigatable.cs" />
+    <Compile Include="IncomingCallPage.xaml.cs">
+      <DependentUpon>IncomingCallPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="InviteComposer.cs" />
+    <Compile Include="InviteContactPage.xaml.cs">
+      <DependentUpon>InviteContactPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="InviteListHeader.cs" />
+    <Compile Include="InvitePage.xaml.cs">
+      <DependentUpon>InvitePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="IWPMessageSender.cs" />
+    <Compile Include="IWPTangoEngine.cs" />
+    <Compile Include="Localization.cs" />
+    <Compile Include="LocalizedStrings.cs" />
+    <Compile Include="MainPage.xaml.cs">
+      <DependentUpon>MainPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ISendableMessage.cs" />
+    <Compile Include="MissingTypes.cs" />
+    <Compile Include="Payloads.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="PushEventManager.cs" />
+    <Compile Include="Drivers.cs" />
+    <Compile Include="IWPLogger.cs" />
+    <Compile Include="IDevInfoDriver.cs" />
+    <Compile Include="RegisterPage.xaml.cs">
+      <DependentUpon>RegisterPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SettingsPage.xaml.cs">
+      <DependentUpon>SettingsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TangoEventPageBase.cs" />
+    <Compile Include="TipsPage.xaml.cs">
+      <DependentUpon>TipsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ToastNotificationClientImpl.cs" />
+    <Compile Include="UWPCompatibility.cs" />
+    <Compile Include="Utils.cs" />
+    <Compile Include="VideoMailPage.xaml.cs">
+      <DependentUpon>VideoMailPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="VideoMailViewPage.xaml.cs">
+      <DependentUpon>VideoMailViewPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WelcomePage.xaml.cs">
+      <DependentUpon>WelcomePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WPMessageSender.cs" />
+    <Compile Include="WPTangoEngine.cs" />
+    <Compile Include="sgiggle\xmpp\ChatState.cs" />
+    <Compile Include="sgiggle\xmpp\Interfaces.cs" />
+    <Compile Include="sgiggle\xmpp\Drivers.cs" />
+    <Compile Include="sgiggle\xmpp\Payloads.cs" />
+    <Compile Include="sgiggle\xmpp\XmppClient.cs" />
+    <Compile Include="sgiggle\xmpp\MessageType.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <AppxManifest Include="Package.appxmanifest">
+      <SubType>Designer</SubType>
+    </AppxManifest>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Assets\LargeTile.scale-100.png" />
+    <Content Include="Assets\LargeTile.scale-125.png" />
+    <Content Include="Assets\LargeTile.scale-150.png" />
+    <Content Include="Assets\LargeTile.scale-200.png" />
+    <Content Include="Assets\LargeTile.scale-400.png" />
+    <Content Include="Assets\Resources\icon_add.png" />
+    <Content Include="Assets\Resources\icon_cancel.png" />
+    <Content Include="Assets\Resources\icon_delete.png" />
+    <Content Include="Assets\Resources\icon_save.png" />
+    <Content Include="Assets\Resources\icon_search.png" />
+    <Content Include="Assets\Resources\icon_send_email.png" />
+    <Content Include="Assets\Resources\icon_send_sms.png" />
+    <Content Include="Assets\Resources\Sound\ringback.wav" />
+    <Content Include="Assets\Resources\Sound\ringtone.wav" />
+    <Content Include="Assets\Resources\tango_c0.png" />
+    <Content Include="Assets\Resources\tango_c1.png" />
+    <Content Include="Assets\Resources\tango_c2.png" />
+    <Content Include="Assets\Resources\tango_c3.png" />
+    <Content Include="Assets\Resources\tango_c4.png" />
+    <Content Include="Assets\Resources\tango_c5.png" />
+    <Content Include="Assets\Resources\tango_c6.png" />
+    <Content Include="Assets\Resources\tango_c7.png" />
+    <Content Include="Assets\Resources\tango_c8.png" />
+    <Content Include="Assets\Resources\tango_c9+.png" />
+    <Content Include="Assets\Resources\tango_c9.png" />
+    <Content Include="Assets\Resources\unicode_to_hanyu_pinyin.txt" />
+    <Content Include="Assets\SmallTile.scale-100.png" />
+    <Content Include="Assets\SmallTile.scale-125.png" />
+    <Content Include="Assets\SmallTile.scale-150.png" />
+    <Content Include="Assets\SmallTile.scale-200.png" />
+    <Content Include="Assets\SmallTile.scale-400.png" />
+    <Content Include="Assets\SplashScreen.scale-100.png" />
+    <Content Include="Assets\SplashScreen.scale-125.png" />
+    <Content Include="Assets\SplashScreen.scale-150.png" />
+    <Content Include="Assets\SplashScreen.scale-400.png" />
+    <Content Include="Assets\Square150x150Logo.scale-100.png" />
+    <Content Include="Assets\Square150x150Logo.scale-125.png" />
+    <Content Include="Assets\Square150x150Logo.scale-150.png" />
+    <Content Include="Assets\Square150x150Logo.scale-400.png" />
+    <Content Include="Assets\Square44x44Logo.altform-lightunplated_targetsize-16.png" />
+    <Content Include="Assets\Square44x44Logo.altform-lightunplated_targetsize-24.png" />
+    <Content Include="Assets\Square44x44Logo.altform-lightunplated_targetsize-256.png" />
+    <Content Include="Assets\Square44x44Logo.altform-lightunplated_targetsize-32.png" />
+    <Content Include="Assets\Square44x44Logo.altform-lightunplated_targetsize-48.png" />
+    <Content Include="Assets\Square44x44Logo.altform-unplated_targetsize-16.png" />
+    <Content Include="Assets\Square44x44Logo.altform-unplated_targetsize-256.png" />
+    <Content Include="Assets\Square44x44Logo.altform-unplated_targetsize-32.png" />
+    <Content Include="Assets\Square44x44Logo.altform-unplated_targetsize-48.png" />
+    <Content Include="Assets\Square44x44Logo.scale-100.png" />
+    <Content Include="Assets\Square44x44Logo.scale-125.png" />
+    <Content Include="Assets\Square44x44Logo.scale-150.png" />
+    <Content Include="Assets\Square44x44Logo.scale-400.png" />
+    <Content Include="Assets\Square44x44Logo.targetsize-16.png" />
+    <Content Include="Assets\Square44x44Logo.targetsize-24.png" />
+    <Content Include="Assets\Square44x44Logo.targetsize-256.png" />
+    <Content Include="Assets\Square44x44Logo.targetsize-32.png" />
+    <Content Include="Assets\Square44x44Logo.targetsize-48.png" />
+    <Content Include="Assets\StoreLogo.scale-100.png" />
+    <Content Include="Assets\StoreLogo.scale-125.png" />
+    <Content Include="Assets\StoreLogo.scale-150.png" />
+    <Content Include="Assets\StoreLogo.scale-200.png" />
+    <Content Include="Assets\StoreLogo.scale-400.png" />
+    <Content Include="Assets\Wide310x150Logo.scale-100.png" />
+    <Content Include="Assets\Wide310x150Logo.scale-125.png" />
+    <Content Include="Assets\Wide310x150Logo.scale-150.png" />
+    <Content Include="Assets\Wide310x150Logo.scale-400.png" />
+    <Content Include="Properties\Default.rd.xml" />
+    <Content Include="Assets\LockScreenLogo.scale-200.png" />
+    <Content Include="Assets\SplashScreen.scale-200.png" />
+    <Content Include="Assets\Square150x150Logo.scale-200.png" />
+    <Content Include="Assets\Square44x44Logo.scale-200.png" />
+    <Content Include="Assets\Square44x44Logo.targetsize-24_altform-unplated.png" />
+    <Content Include="Assets\Wide310x150Logo.scale-200.png" />
+    <Content Include="Resources\alertbar.png" />
+    <Content Include="Resources\avatar.png" />
+    <Content Include="Resources\big_mute_off.png" />
+    <Content Include="Resources\big_mute_on.png" />
+    <Content Include="Resources\big_speaker_disable.png" />
+    <Content Include="Resources\big_speaker_off.png" />
+    <Content Include="Resources\big_speaker_on.png" />
+    <Content Include="Resources\big_video_disable.png" />
+    <Content Include="Resources\big_video_off.png" />
+    <Content Include="Resources\big_video_on.png" />
+    <Content Include="Resources\call_icon.png" />
+    <Content Include="Resources\call_log_item.png" />
+    <Content Include="Resources\contacts.png" />
+    <Content Include="Resources\icon_alert.png" />
+    <Content Include="Resources\invite.png" />
+    <Content Include="Resources\logo_medium.png" />
+    <Content Include="Resources\logo_small.png" />
+    <Content Include="Resources\profile_edit.png" />
+    <Content Include="Resources\recents.png" />
+    <Content Include="Resources\settings.png" />
+    <Content Include="Resources\small_avatar.png" />
+    <Content Include="Resources\small_hangup_off.png" />
+    <Content Include="Resources\small_hangup_on.png" />
+    <Content Include="Resources\small_mute_off.png" />
+    <Content Include="Resources\small_mute_on.png" />
+    <Content Include="Resources\small_video_off.png" />
+    <Content Include="Resources\small_video_on.png" />
+    <Content Include="Resources\splashscreenimage.png" />
+    <Content Include="Resources\swap_camera.png" />
+    <Content Include="Resources\swap_camera_hit.png" />
+    <Content Include="Resources\tango_user_icon.png" />
+    <Content Include="Resources\video_mail.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Page Include="AudioVideoCallPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CallHistoryPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ComTestPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ContactPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CountrySelectorPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="IncomingCallPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="InviteContactPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="InvitePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MainPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="RegisterPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="SettingsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="TipsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="VideoMailPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="VideoMailViewPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WelcomePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
+      <Version>6.2.14</Version>
+    </PackageReference>
+    <PackageReference Include="Microsoft.Toolkit.Uwp.UI.Controls">
+      <Version>7.1.2</Version>
+    </PackageReference>
+    <PackageReference Include="Microsoft.UI.Xaml">
+      <Version>2.7.0</Version>
+    </PackageReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Google.ProtocolBuffers\Google.ProtocolBuffers.csproj">
+      <Project>{76e720f1-5542-42ab-b27e-1810a6a7e744}</Project>
+      <Name>Google.ProtocolBuffers</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Tango.Drivers\Tango.Drivers.csproj">
+      <Project>{2629e08d-cce7-46e8-b1c8-79c37f8abdac}</Project>
+      <Name>Tango.Drivers</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Tango.Messages\Tango.Messages.csproj">
+      <Project>{611572b5-77eb-4748-a55b-8382b200eeec}</Project>
+      <Name>Tango.Messages</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Tango.Toolbox\Tango.Toolbox.csproj">
+      <Project>{47207b77-5dc5-41ae-9920-ff4d484b167d}</Project>
+      <Name>Tango.Toolbox</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Strings\ru-RU\LangResource.resw" />
+    <PRIResource Include="Strings\en-US\LangResource.resw" />
+    <None Include="WinPhoneTango_TemporaryKey.pfx" />
+  </ItemGroup>
+  <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
+    <VisualStudioVersion>14.0</VisualStudioVersion>
+  </PropertyGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\WindowsXaml\v$(VisualStudioVersion)\Microsoft.Windows.UI.Xaml.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

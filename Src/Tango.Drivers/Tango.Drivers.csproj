@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{2629E08D-CCE7-46E8-B1C8-79C37F8ABDAC}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Tango.Drivers</RootNamespace>
+    <AssemblyName>Tango.Drivers</AssemblyName>
+    <DefaultLanguage>en-US</DefaultLanguage>
+    <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
+    <TargetPlatformVersion Condition=" '$(TargetPlatformVersion)' == '' ">10.0.19041.0</TargetPlatformVersion>
+    <LangVersion>latest</LangVersion>
+    <TargetPlatformMinVersion>10.0.10240.0</TargetPlatformMinVersion>
+    <MinimumVisualStudioVersion>14</MinimumVisualStudioVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{A5A43C5B-DE2A-4C0C-9213-0A381AF9435A};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>full</DebugType>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <PlatformTarget>x86</PlatformTarget>
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <Optimize>true</Optimize>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|ARM'">
+    <PlatformTarget>ARM</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\ARM\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>full</DebugType>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|ARM'">
+    <PlatformTarget>ARM</PlatformTarget>
+    <OutputPath>bin\ARM\Release\</OutputPath>
+    <DefineConstants>TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <Optimize>true</Optimize>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|ARM64'">
+    <PlatformTarget>ARM64</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\ARM64\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>full</DebugType>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|ARM64'">
+    <PlatformTarget>ARM64</PlatformTarget>
+    <OutputPath>bin\ARM64\Release\</OutputPath>
+    <DefineConstants>TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <Optimize>true</Optimize>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <PlatformTarget>x64</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>full</DebugType>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <PlatformTarget>x64</PlatformTarget>
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <Optimize>true</Optimize>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <PropertyGroup>
+    <RestoreProjectStyle>PackageReference</RestoreProjectStyle>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="AudioModeMonitorDriver.cs" />
+    <Compile Include="AudioModeMonitorDriverConnector.cs" />
+    <Compile Include="CapturerDriver.cs" />
+    <Compile Include="CapturerDriverConnector.cs" />
+    <Compile Include="Class1.cs" />
+    <Compile Include="ComClassId.cs" />
+    <Compile Include="ConnectivityDriver.cs" />
+    <Compile Include="ConnectivityDriverConnector.cs" />
+    <Compile Include="ContactsDriver.cs" />
+    <Compile Include="ContactsDriverConnector.cs" />
+    <Compile Include="COSecWin32Proxy.cs" />
+    <Compile Include="DevInfoDriver.cs" />
+    <Compile Include="DriversManager.cs" />
+    <Compile Include="IAudioModeMonitorDriver.cs" />
+    <Compile Include="IAudioModeMonitorDriverConnector.cs" />
+    <Compile Include="ICapturerDriver.cs" />
+    <Compile Include="ICapturerDriverConnector.cs" />
+    <Compile Include="IConnectivityDriver.cs" />
+    <Compile Include="IConnectivityDriverConnector.cs" />
+    <Compile Include="IContactsDriver.cs" />
+    <Compile Include="IContactsDriverConnector.cs" />
+    <Compile Include="IDevInfoDriver.cs" />
+    <Compile Include="IPlayerDriver.cs" />
+    <Compile Include="IPlayerDriverConnector.cs" />
+    <Compile Include="IRecorderDriver.cs" />
+    <Compile Include="IRecorderDriverConnector.cs" />
+    <Compile Include="IRendererDriver.cs" />
+    <Compile Include="IRendererDriverConnector.cs" />
+    <Compile Include="IScreenDriver.cs" />
+    <Compile Include="IScreenDriverConnector.cs" />
+    <Compile Include="ISecProxyWin32Interface.cs" />
+    <Compile Include="ISoundEffPlayerDriver.cs" />
+    <Compile Include="ISoundEffPlayerDriverConnector.cs" />
+    <Compile Include="PlayerDriver.cs" />
+    <Compile Include="PlayerDriverConnector.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RecorderDriver.cs" />
+    <Compile Include="RecorderDriverConnector.cs" />
+    <Compile Include="RendererDriver.cs" />
+    <Compile Include="RendererDriverConnector.cs" />
+    <Compile Include="SamsungRegistryManager.cs" />
+    <Compile Include="ScreenDriver.cs" />
+    <Compile Include="ScreenDriverConnector.cs" />
+    <Compile Include="SoundEffPlayerDriver.cs" />
+    <Compile Include="SoundEffPlayerDriverConnector.cs" />
+    <Compile Include="SoundType.cs" />
+    <Compile Include="UIManagerInterface.cs" />
+    <Compile Include="VideoRenderBuffer.cs" />
+    <EmbeddedResource Include="Properties\Tango.Drivers.rd.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
+      <Version>6.2.14</Version>
+    </PackageReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Google.ProtocolBuffers\Google.ProtocolBuffers.csproj">
+      <Project>{76e720f1-5542-42ab-b27e-1810a6a7e744}</Project>
+      <Name>Google.ProtocolBuffers</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ImageTools.IO.Bmp\ImageTools.IO.Bmp.csproj">
+      <Project>{0f6fa9cd-ef41-4068-a934-97f8d92fa262}</Project>
+      <Name>ImageTools.IO.Bmp</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ImageTools.IO.Gif\ImageTools.IO.Gif.csproj">
+      <Project>{3eb9bff2-4cda-47e7-b490-58cc0c420491}</Project>
+      <Name>ImageTools.IO.Gif</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ImageTools.IO.Png\ImageTools.IO.Png.csproj">
+      <Project>{24752428-c2f4-4bc4-931c-7c2b00aaf7ce}</Project>
+      <Name>ImageTools.IO.Png</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ImageTools\ImageTools.csproj">
+      <Project>{04300dd5-53cb-4314-86ef-e4560cc4ea04}</Project>
+      <Name>ImageTools</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Tango.Messages\Tango.Messages.csproj">
+      <Project>{611572b5-77eb-4748-a55b-8382b200eeec}</Project>
+      <Name>Tango.Messages</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Tango.Toolbox\Tango.Toolbox.csproj">
+      <Project>{47207b77-5dc5-41ae-9920-ff4d484b167d}</Project>
+      <Name>Tango.Toolbox</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
+    <VisualStudioVersion>14.0</VisualStudioVersion>
+  </PropertyGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\WindowsXaml\v$(VisualStudioVersion)\Microsoft.Windows.UI.Xaml.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

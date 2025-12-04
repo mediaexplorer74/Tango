@@ -1,0 +1,67 @@
+<app:TangoEventPageBase
+  x:Class="WinPhoneTango.MainPage"
+  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+
+  xmlns:app="clr-namespace:WinPhoneTango"
+  xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+  xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+  mc:Ignorable="d" d:DesignWidth="480" d:DesignHeight="800"
+
+  Foreground="{StaticResource TangoForeground}"
+  Background="{StaticResource TangoBackground}"
+>
+
+  <app:TangoEventPageBase.Resources>
+    <x:Double x:Key="MainMenuFont">40</x:Double>
+    <DataTemplate x:Key="listItemTemplate">
+      <StackPanel Orientation="Horizontal" Height="84" Margin="18,0,0,0"
+                  Visibility="{Binding Path=Visibility}">
+        <Image Stretch="None" Source="{Binding Path=Icon}"
+               VerticalAlignment="Center" />
+        <TextBlock Text="{Binding Path=Title}"
+                   FontSize="{StaticResource MainMenuFont}"
+                   VerticalAlignment="Center" Margin="30,9,0" />
+        <TextBlock Foreground="{StaticResource TangoOrangeBrush}"
+                   Visibility="{Binding Path=ShowNumber}"
+                   VerticalAlignment="Center">
+          <TextBlock.Inlines>
+            <Run Text="(" FontSize="{StaticResource MainMenuFont}" />
+            <Run Text="{Binding Path=Number}" FontSize="{StaticResource MainMenuFont}" />
+            <Run Text=")" FontSize="{StaticResource MainMenuFont}" />
+          </TextBlock.Inlines>
+        </TextBlock>
+      </StackPanel>
+    </DataTemplate>
+  </app:TangoEventPageBase.Resources>
+
+  <!--LayoutRoot is the root grid where all page content is placed-->
+  <Grid x:Name="LayoutRoot">
+    <Grid.RowDefinitions>
+      <RowDefinition Height="Auto"/>
+      <RowDefinition Height="*"/>
+    </Grid.RowDefinitions>
+
+    <!--TitlePanel contains the name of the application and page title-->
+    <StackPanel x:Name="TitlePanel" Grid.Row="0" Margin="0,0,0,10">
+      <StackPanel Orientation="Horizontal">
+        <Image Source="ms-appx:///WinPhoneTango/Resources/logo_medium.png" HorizontalAlignment="Left" VerticalAlignment="Top" Stretch="None"></Image>
+        <Rectangle Width="480" Fill="{StaticResource TangoOrangeBrush}" HorizontalAlignment="Left" VerticalAlignment="Stretch"></Rectangle>
+      </StackPanel>
+      <TextBlock x:Name="PageTitle" Text="welcome"
+                 Margin="24,30,0,0" Style="{StaticResource TangoTitleStyle}"
+                 HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="72" />
+    </StackPanel>
+
+    <!--ContentPanel - place additional content here-->
+    <Grid x:Name="ContentPanel" Grid.Row="1" Margin="24,0,24,0">
+      <ListBox ScrollViewer.VerticalScrollBarVisibility="Disabled" Height="560" HorizontalAlignment="Center" Name="mainListBox"
+               VerticalAlignment="Top" Width="456"
+               ItemTemplate="{StaticResource listItemTemplate}"
+               SelectionChanged="mainListBox_SelectionChanged"
+               ItemContainerStyle="{StaticResource TangoAccentColorItemStyle}">
+      </ListBox>
+    </Grid>
+  </Grid>
+
+</app:TangoEventPageBase>

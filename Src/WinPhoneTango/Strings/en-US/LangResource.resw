@@ -1,0 +1,462 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="account_verification_msg" xml:space="preserve">
+    <value>Press ok to verify your phone number</value>
+  </data>
+  <data name="account_verification_title" xml:space="preserve">
+    <value>Account Verification</value>
+  </data>
+  <data name="all_call_title" xml:space="preserve">
+    <value>all</value>
+  </data>
+  <data name="answer_button" xml:space="preserve">
+    <value>Answer</value>
+  </data>
+  <data name="app_name" xml:space="preserve">
+    <value>Tango</value>
+  </data>
+  <data name="bubble_video_text_off" xml:space="preserve">
+    <value>Tap the camera to turn video off</value>
+  </data>
+  <data name="bubble_video_text_on" xml:space="preserve">
+    <value>Tap the camera to turn video on</value>
+  </data>
+  <data name="call_error_msg" xml:space="preserve">
+    <value>An error prevented your call from going through</value>
+  </data>
+  <data name="call_error_title" xml:space="preserve">
+    <value>Call Error</value>
+  </data>
+  <data name="call_history_title" xml:space="preserve">
+    <value>CALL HISTORY</value>
+  </data>
+  <data name="call_log_delete_all" xml:space="preserve">
+    <value>Delete All</value>
+  </data>
+  <data name="call_log_delete_all_alert" xml:space="preserve">
+    <value>Are you sure you want to delete call history?</value>
+  </data>
+  <data name="call_log_delete_all_title" xml:space="preserve">
+    <value>Delete History</value>
+  </data>
+  <data name="call_log_incoming" xml:space="preserve">
+    <value>Incoming</value>
+  </data>
+  <data name="call_log_missed" xml:space="preserve">
+    <value>Missed Call</value>
+  </data>
+  <data name="call_log_no_calls_msg" xml:space="preserve">
+    <value>no calls</value>
+  </data>
+  <data name="call_log_no_missed_calls_msg" xml:space="preserve">
+    <value>no missed calls</value>
+  </data>
+  <data name="call_log_outgoing" xml:space="preserve">
+    <value>Outgoing</value>
+  </data>
+  <data name="call_log_tab" xml:space="preserve">
+    <value>Call History</value>
+  </data>
+  <data name="call_log_when_yesterday" xml:space="preserve">
+    <value>yesterday</value>
+  </data>
+  <data name="call_status_active" xml:space="preserve">
+    <value>Tango</value>
+  </data>
+  <data name="call_status_connecting" xml:space="preserve">
+    <value>CONNECTING...</value>
+  </data>
+  <data name="call_status_dialing" xml:space="preserve">
+    <value>DIALING...</value>
+  </data>
+  <data name="call_status_ended" xml:space="preserve">
+    <value>CALL ENDED</value>
+  </data>
+  <data name="call_status_incoming" xml:space="preserve">
+    <value>Incoming call...</value>
+  </data>
+  <data name="call_status_pre_dialing" xml:space="preserve">
+    <value>INITIALIZING...</value>
+  </data>
+  <data name="call_str_account_resolver_error" xml:space="preserve">
+    <value>This contact is not valid. Please restart Tango or refresh your contacts.</value>
+  </data>
+  <data name="call_str_incomptiable_client_error" xml:space="preserve">
+    <value>One of the two calling parties has an old version of Tango. Please check if an update is available.</value>
+  </data>
+  <data name="call_str_incorrect_credential" xml:space="preserve">
+    <value>Tango was unable to validate your account. If this problem persists, please uninstall and reinstall the application.</value>
+  </data>
+  <data name="call_str_insufficient_network_error" xml:space="preserve">
+    <value>Your network connection is too low to Tango right now. Please try again later.</value>
+  </data>
+  <data name="call_str_network_error" xml:space="preserve">
+    <value>Tango requires a network connection to make calls.</value>
+  </data>
+  <data name="call_str_no_premium_contact" xml:space="preserve">
+    <value>The phone number you are calling is not registered on Tango</value>
+  </data>
+  <data name="call_str_tango_server_error" xml:space="preserve">
+    <value>The phone is having trouble accessing Tango's servers. Please try again later.</value>
+  </data>
+  <data name="call_str_unknown_error" xml:space="preserve">
+    <value>Oops... Tango error. Please try again later.</value>
+  </data>
+  <data name="cancel_button" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="contacts_all" xml:space="preserve">
+    <value>all</value>
+  </data>
+  <data name="contacts_tab" xml:space="preserve">
+    <value>Contacts</value>
+  </data>
+  <data name="contacts_tango" xml:space="preserve">
+    <value>tango</value>
+  </data>
+  <data name="contacts_title" xml:space="preserve">
+    <value>CONTACTS</value>
+  </data>
+  <data name="contact_no_number_email_alert" xml:space="preserve">
+    <value>You have no contact information for this person. You must add a mobile number or email address to their address book entry on your phone.</value>
+  </data>
+  <data name="contact_no_number_email_alert_title" xml:space="preserve">
+    <value>Invite Contact</value>
+  </data>
+  <data name="copyright" xml:space="preserve">
+    <value>Copyright © 2011 Tango</value>
+  </data>
+  <data name="country_code_title" xml:space="preserve">
+    <value>Country Codes</value>
+  </data>
+  <data name="decline_button" xml:space="preserve">
+    <value>Decline</value>
+  </data>
+  <data name="email_input_hint" xml:space="preserve">
+    <value>Enter your email</value>
+  </data>
+  <data name="email_invalid_msg" xml:space="preserve">
+    <value>The email address is invalid</value>
+  </data>
+  <data name="email_label" xml:space="preserve">
+    <value>Email</value>
+  </data>
+  <data name="end_call_button" xml:space="preserve">
+    <value>end call</value>
+  </data>
+  <data name="exit_confirm_text" xml:space="preserve">
+    <value>Are you sure to exit Tango?</value>
+  </data>
+  <data name="first_name_input_hint" xml:space="preserve">
+    <value>Enter your first name</value>
+  </data>
+  <data name="first_name_label" xml:space="preserve">
+    <value>First Name</value>
+  </data>
+  <data name="hour" xml:space="preserve">
+    <value>h</value>
+  </data>
+  <data name="ignored_call_text" xml:space="preserve">
+    <value> did not answer. Try again later.</value>
+  </data>
+  <data name="invite_contact_empty_prompt" xml:space="preserve">
+    <value>Add phone or email to Address Book to invite</value>
+  </data>
+  <data name="invite_contact_prompt" xml:space="preserve">
+    <value>Invite your friends to Tango!</value>
+  </data>
+  <data name="invite_contact_title" xml:space="preserve">
+    <value>INVITE CONTACT</value>
+  </data>
+  <data name="invite_email" xml:space="preserve">
+    <value>email</value>
+  </data>
+  <data name="invite_email_body" xml:space="preserve">
+    <value>Check out Tango for making free phone calls and free video calls on your Android phone, iPhone, iPod touch, or iPad.  Tango will also let you make free international calls and works over 3G,  4G and Wi-Fi so you can talk wherever you are. Download Tango at http://install.tango.me, or search for Tango in the App Store or Android Market. See you soon!</value>
+  </data>
+  <data name="invite_email_subject" xml:space="preserve">
+    <value>Let's Tango!</value>
+  </data>
+  <data name="invite_sms" xml:space="preserve">
+    <value>sms</value>
+  </data>
+  <data name="invite_sms_body" xml:space="preserve">
+    <value>Tango is a great app for making free phone calls and free video calls over 3G, 4G, and Wi-Fi.  Download it at http://install.tango.net</value>
+  </data>
+  <data name="invite_tab" xml:space="preserve">
+    <value>Invite</value>
+  </data>
+  <data name="invite_title" xml:space="preserve">
+    <value>INVITE</value>
+  </data>
+  <data name="last_name_input_hint" xml:space="preserve">
+    <value>Enter your last name</value>
+  </data>
+  <data name="last_name_label" xml:space="preserve">
+    <value>Last Name</value>
+  </data>
+  <data name="low_bandwidth_l1" xml:space="preserve">
+    <value>Network connection is poor</value>
+  </data>
+  <data name="low_bandwidth_l2" xml:space="preserve">
+    <value>Quality will be affected</value>
+  </data>
+  <data name="menuitem_add" xml:space="preserve">
+    <value>add</value>
+  </data>
+  <data name="menuitem_delete" xml:space="preserve">
+    <value>delete</value>
+  </data>
+  <data name="menuitem_search" xml:space="preserve">
+    <value>search</value>
+  </data>
+  <data name="minute" xml:space="preserve">
+    <value>m</value>
+  </data>
+  <data name="missed_call_title" xml:space="preserve">
+    <value>missed</value>
+  </data>
+  <data name="mobile_number_input_hint" xml:space="preserve">
+    <value>Enter your mobile number</value>
+  </data>
+  <data name="mobile_number_label" xml:space="preserve">
+    <value>Mobile Number</value>
+  </data>
+  <data name="mobile_number_notice" xml:space="preserve">
+    <value>This mobile phone number is required to receive Tango calls.</value>
+  </data>
+  <data name="mute_button" xml:space="preserve">
+    <value>mute</value>
+  </data>
+  <data name="no_contacts_msg" xml:space="preserve">
+    <value>Friends who have downloaded Tango will instantly appear here.  Use the Invite tab to send a text message or email to more people to Tango with you.  Check back often to see who you can Tango!</value>
+  </data>
+  <data name="no_search_result" xml:space="preserve">
+    <value>No Results</value>
+  </data>
+  <data name="other_device_del_msg" xml:space="preserve">
+    <value>Your account is now verified and all other devices are no longer associated with your account</value>
+  </data>
+  <data name="other_device_del_title" xml:space="preserve">
+    <value>Account Verified</value>
+  </data>
+  <data name="other_device_msg" xml:space="preserve">
+    <value>Have you registered another device?</value>
+  </data>
+  <data name="other_device_title" xml:space="preserve">
+    <value>Other Registered Device</value>
+  </data>
+  <data name="prevent_using_prompt" xml:space="preserve">
+    <value>Your phone does not support Tango video calls.</value>
+  </data>
+  <data name="preview_button" xml:space="preserve">
+    <value>preview</value>
+  </data>
+  <data name="profile_clear_account" xml:space="preserve">
+    <value>Clear Account</value>
+  </data>
+  <data name="profile_clear_account_alert" xml:space="preserve">
+    <value>Are you sure you want to clear account information?</value>
+  </data>
+  <data name="profile_title" xml:space="preserve">
+    <value>EDIT ACCOUNT</value>
+  </data>
+  <data name="push_call_alert" xml:space="preserve">
+    <value>You have an incoming call...</value>
+  </data>
+  <data name="receiver_call_alert" xml:space="preserve">
+    <value>would like to Tango...</value>
+  </data>
+  <data name="register_title" xml:space="preserve">
+    <value>CREATE ACCOUNT</value>
+  </data>
+  <data name="registration_failed_due_to_network" xml:space="preserve">
+    <value>Oops!  Your network seems to be blocking the registration.  Please go to settings and try saving your profile again from another network so you can receive calls.</value>
+  </data>
+  <data name="registration_failed_message" xml:space="preserve">
+    <value>Oops!  We are experiencing a problem right now.  Please go to settings and try saving your profile again later so you can receive calls.</value>
+  </data>
+  <data name="registration_failed_title" xml:space="preserve">
+    <value>Registration Failed</value>
+  </data>
+  <data name="save_contact_prompt" xml:space="preserve">
+    <value>By saving your address book, you can find more people to Tango and more features will become available to you.</value>
+  </data>
+  <data name="save_contact_title" xml:space="preserve">
+    <value>Save Address Book</value>
+  </data>
+  <data name="search_input_hint" xml:space="preserve">
+    <value>Search</value>
+  </data>
+  <data name="second" xml:space="preserve">
+    <value>s</value>
+  </data>
+  <data name="select_all" xml:space="preserve">
+    <value>Select All</value>
+  </data>
+  <data name="sender_call_alert" xml:space="preserve">
+    <value>CALLING...</value>
+  </data>
+  <data name="settings_tab" xml:space="preserve">
+    <value>Settings</value>
+  </data>
+  <data name="settings_title" xml:space="preserve">
+    <value>SETTINGS</value>
+  </data>
+  <data name="speaker_button" xml:space="preserve">
+    <value>speaker</value>
+  </data>
+  <data name="submit_button" xml:space="preserve">
+    <value>save</value>
+  </data>
+  <data name="switching_camera_msg" xml:space="preserve">
+    <value>is switching cameras</value>
+  </data>
+  <data name="terms_of_use" xml:space="preserve">
+    <value>By tapping save, you agree to Tango's</value>
+  </data>
+  <data name="text_profile" xml:space="preserve">
+    <value>Your profile is what others see when you call them on Tango.</value>
+  </data>
+  <data name="tips_button" xml:space="preserve">
+    <value>tips</value>
+  </data>
+  <data name="tips_title" xml:space="preserve">
+    <value>TIPS</value>
+  </data>
+  <data name="tips_url" xml:space="preserve">
+    <value>http://www.tango.me/tips/</value>
+  </data>
+  <data name="unselect_all" xml:space="preserve">
+    <value>Unselect All</value>
+  </data>
+  <data name="validation_pc_prompt" xml:space="preserve">
+    <value>Please enter verification code {0} to complete your desktop registration</value>
+  </data>
+  <data name="version" xml:space="preserve">
+    <value>Version</value>
+  </data>
+  <data name="video_button" xml:space="preserve">
+    <value>video</value>
+  </data>
+  <data name="video_mail_tab" xml:space="preserve">
+    <value>Video Mail</value>
+  </data>
+</root>

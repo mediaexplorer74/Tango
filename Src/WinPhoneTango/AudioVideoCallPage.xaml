@@ -1,0 +1,160 @@
+﻿<app:TangoEventPageBase
+  x:Class="WinPhoneTango.AudioVideoCallPage"
+  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+  xmlns:app="clr-namespace:WinPhoneTango"
+  xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+  xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+  FontFamily="{StaticResource TangoFontFamilyNormal}"
+  Foreground="{StaticResource TangoForeground}"
+  SupportedOrientations="Portrait" Orientation="Portrait"
+  mc:Ignorable="d" d:DesignHeight="800" d:DesignWidth="480">
+
+  <app:TangoEventPageBase.Resources>
+    <Style x:Key="BigButtonStyle" TargetType="Button">
+      <Setter Property="VerticalAlignment" Value="Top"/>
+      <Setter Property="Margin" Value="3,0,3,0"/>
+    </Style>
+    <Storyboard x:Name="rotateY">
+      <DoubleAnimation Storyboard.TargetName="planeProjection"
+                       Storyboard.TargetProperty="RotationY"
+                       From="0" To="360" Duration="0:0:2" />
+    </Storyboard>
+  </app:TangoEventPageBase.Resources>
+
+  <!--No XAML content is required as the page is rendered entirely with the XNA Framework-->
+  <Grid x:Name="LayoutRoot">
+    <!--AudioInProgress mode-->
+    <Grid Name="AudioInProgress" Width="480" Height="400" VerticalAlignment="Top">
+      <Grid.RowDefinitions>
+        <RowDefinition Height="Auto"/>
+        <RowDefinition Height="*"/>
+      </Grid.RowDefinitions>
+      <!--Tange title bar-->
+      <StackPanel Grid.Row="0" Orientation="Horizontal">
+        <Image Source="ms-appx:///WinPhoneTango/Resources/logo_small.png" HorizontalAlignment="Left" VerticalAlignment="Top" Stretch="None"></Image>
+        <Rectangle Width="480" Fill="{StaticResource TangoOrangeBrush}" HorizontalAlignment="Left" VerticalAlignment="Stretch"></Rectangle>
+      </StackPanel>
+      <!--Audio panel-->
+      <StackPanel x:Name="AudioPanel" Grid.Row="1" Margin="0,27,0,0">
+        <!--Show eslapsed time, remote user name-->
+        <TextBlock
+                 x:Name="textPastTime" Text="00:00"
+                 Margin="24,0,24,0"
+                 Foreground="{StaticResource TangoOrangeBrush}"
+                 FontSize="20" />
+        <Viewbox Margin="24,-10,24,6" MaxHeight="74"
+                 VerticalAlignment="Stretch" HorizontalAlignment="Left">
+          <TextBlock x:Name="callUserName" Text="" FontSize="74" />
+        </Viewbox>
+        <!--End call button-->
+        <Button
+                Name="buttonEndCall" Background="{StaticResource TangoOrangeBrush}"
+                Click="bothButtonHangup_Click" Margin="12,0,12,13"
+                Content="{Binding Localizedresources.end_call_button, Source={StaticResource LocalizedStrings}}" />
+        <!--Audio panel buttons-->
+        <StackPanel Orientation="Horizontal">
+          <Button x:Name="bigButtonMute" Style="{StaticResource BigButtonStyle}"
+                               Content="{Binding Localizedresources.mute_button, Source={StaticResource LocalizedStrings}}"
+                               Width="154" Height="143"
+                               Click="bigButtonMute_Click" />
+          <Button x:Name="bigButtonVideo" Style="{StaticResource BigButtonStyle}"
+                               Content="{Binding Localizedresources.video_button, Source={StaticResource LocalizedStrings}}"
+                               Width="154" Height="143"
+                               Click="bigButtonVideo_Click" />
+          <Button x:Name="bigButtonSpeaker" Style="{StaticResource BigButtonStyle}"
+                               Content="{Binding Localizedresources.speaker_button, Source={StaticResource LocalizedStrings}}"
+                               Width="154" Height="143"
+                               Click="bigButtonSpeaker_Click" />
+        </StackPanel>
+      </StackPanel>
+    </Grid>
+
+    <!--VideoAudioInProgress mode-->
+    <Grid Name="VideoAudioInProgress">
+      <!--Local video viewer - placeholder since UWP handles video differently-->
+      <Border x:Name="PreviewBorder" BorderThickness="2"
+              VerticalAlignment="Top" HorizontalAlignment="Left"
+              Width="124" Height="164" Margin="18,466,0,0"
+              BorderBrush="AliceBlue" CornerRadius="3">
+        <!-- Video content would be handled differently in UWP -->
+      </Border>
+      <Rectangle Width="120" Height="160"
+                 x:Name="PreviewRectangle" VerticalAlignment="Top"
+                 Fill="Transparent" />
+      <!--Switching camera alert-->
+      <Border Name="alertBorder" BorderThickness="2" BorderBrush="Silver"
+              CornerRadius="5" Height="66" VerticalAlignment="Center"
+              HorizontalAlignment="Center" Background="#FF2B2C2C" Opacity="0.7">
+        <StackPanel>
+          <TextBlock HorizontalAlignment="Center" VerticalAlignment="Top"
+                     MaxWidth="300" Name="alertTextBlock" FontSize="20" Margin="5,0,5,0">
+            <TextBlock.Text>
+              <Binding ElementName="callUserName" Path="Text" Mode="TwoWay" />
+            </TextBlock.Text>
+          </TextBlock>
+          <TextBlock HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="20" Margin="5,0,5,0"
+                     Text="{Binding Localizedresources.switching_camera_msg, Source={StaticResource LocalizedStrings}}" />
+        </StackPanel>
+      </Border>
+      <!--Low network alert-->
+      <Border Name="networkAlertBorder" BorderThickness="2" BorderBrush="White"
+              CornerRadius="5" VerticalAlignment="Top"
+              HorizontalAlignment="Left" Padding="5,9,5,9" Margin="5,5,0,0"
+              Background="{StaticResource TangoOrangeBrush}" Opacity="0.5">
+        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center"
+                   Width="456" FontSize="18" FontWeight="Bold" TextWrapping="Wrap"
+                   Foreground="{StaticResource TangoForeground}" >
+          <TextBlock.Inlines>
+            <Run Text="{Binding Localizedresources.low_bandwidth_l1, Source={StaticResource LocalizedStrings}}" /><Run Text="." />
+            <Run Text="{Binding Localizedresources.low_bandwidth_l2, Source={StaticResource LocalizedStrings}}" />
+          </TextBlock.Inlines>
+        </TextBlock>
+      </Border>
+      <!--Tap video alert-->
+      <Grid x:Name="alertBar" Grid.Row="1" Margin="0,630,0,0" Width="454" Height="75"
+            Opacity="0.7" HorizontalAlignment="Center" Tapped="alertBar_Tap"
+            Background="Transparent">
+        <Image Stretch="None"
+               Source="ms-appx:///WinPhoneTango/Resources/alertbar.png" />
+        <TextBlock Text="{Binding Localizedresources.bubble_video_text_on, Source={StaticResource LocalizedStrings}}"
+                   FontSize="26" Margin="42,3,0,0"/>
+      </Grid>
+      <!--Onscreen log-->
+      <Border Name="screenLogBorder" BorderThickness="2" BorderBrush="Silver"
+              CornerRadius="5" VerticalAlignment="Top" Width="210" Height="300"
+              HorizontalAlignment="Left" Margin="5,5,0,0" Background="#FF2B2C2C" Opacity="0.7">
+        <TextBlock
+              HorizontalAlignment="Left" VerticalAlignment="Top" Opacity="0.7"
+              MaxWidth="205" Name="screenLogTextBlock" FontSize="20" Margin="5,0,5,0"
+              Text="On Screen Log Here" />
+      </Border>
+      <!--Video panel-->
+      <Border x:Name="VideoPanel" Grid.Row="1" Margin="0,720,0,0" Height="80"
+              Background="#FF2B2C2C" Width="480" Opacity="0.5">
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center"
+                    VerticalAlignment="Center" Background="Transparent">
+          <Button x:Name="smallButtonMute" VerticalAlignment="Top"
+                               Width="143"
+                               Click="smallButtonMute_Click" />
+          <Button x:Name="smallButtonHangup" VerticalAlignment="Top"
+                               Width="144"
+                               Click="bothButtonHangup_Click" />
+          <Button x:Name="smallButtonVideo" VerticalAlignment="Top"
+                               Width="145"
+                               Click="smallButtonVideo_Click" />
+        </StackPanel>
+      </Border>
+      <!--Switch camera button-->
+      <Button x:Name="buttonSwitchCamera" Margin="0,30,30,0"
+                           VerticalAlignment="Top" HorizontalAlignment="Right"
+                           Width="118" Height="56"
+                           Click="buttonSwitchCamera_Click">
+        <Button.Projection>
+          <PlaneProjection x:Name="planeProjection" />
+        </Button.Projection>
+      </Button>
+    </Grid>
+  </Grid>
+
+</app:TangoEventPageBase>

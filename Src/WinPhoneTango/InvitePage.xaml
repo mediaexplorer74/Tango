@@ -1,0 +1,127 @@
+﻿<app:TangoEventPageBase
+  x:Class="WinPhoneTango.InvitePage"
+  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+  xmlns:app="clr-namespace:WinPhoneTango"
+  xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+  xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+  FontFamily="{StaticResource TangoFontFamilyNormal}"
+  Foreground="{StaticResource TangoForeground}"
+  Background="{StaticResource TangoBackground}"
+  SupportedOrientations="Portrait" Orientation="Portrait"
+  mc:Ignorable="d" d:DesignHeight="800" d:DesignWidth="480">
+
+  <app:TangoEventPageBase.Resources>
+    <Style x:Key="ContactListStyle" TargetType="ListView">
+      <Setter Property="HorizontalAlignment" Value="Left"/>
+      <Setter Property="VerticalAlignment" Value="Top"/>
+      <Setter Property="Margin" Value="12,0,12,0"/>
+      <Setter Property="Height" Value="566"/>
+      <Setter Property="Width" Value="432"/>
+      <Setter Property="Background" Value="Transparent"/>
+    </Style>
+
+    <DataTemplate x:Key="smsListHeader">
+      <StackPanel Orientation="Horizontal" Margin="0,0,0,0" Height="Auto"
+                  Visibility="{Binding SMSInstance.SelectAllVisible, Source={StaticResource InviteListsHeader}, Mode=TwoWay}">
+        <CheckBox x:Name="checkBoxSmsHeader" VerticalAlignment="Center"
+                  Foreground="{StaticResource TangoBackground}"
+                  IsChecked="{Binding SMSInstance.IsSelectAllChecked, Source={StaticResource InviteListsHeader}, Mode=TwoWay}"
+                  Checked="checkBoxSmsHeader_Checked" Unchecked="checkBoxSmsHeader_Unchecked" />
+        <!-- use HighlightTextBlock only to avoid accent color when selected -->
+        <TextBlock x:Name="smsListHeaderText" Text="{Binding SMSInstance.SelectAllText, Source={StaticResource InviteListsHeader}, Mode=TwoWay}"
+                   FontSize="32" VerticalAlignment="Center" Tapped="checkBoxSMSText_Tapped" RightTapped="checkBoxSMSText_RightTapped" />
+      </StackPanel>
+    </DataTemplate>
+
+    <DataTemplate x:Key="emailListHeader">
+      <StackPanel Orientation="Horizontal" Margin="0,0,0,0" Height="Auto"
+                  Visibility="{Binding EmailInstance.SelectAllVisible, Source={StaticResource InviteListsHeader}, Mode=TwoWay}">
+        <CheckBox x:Name="checkBoxEmailHeader" VerticalAlignment="Center"
+                  Foreground="{StaticResource TangoBackground}"
+                  IsChecked="{Binding EmailInstance.IsSelectAllChecked, Source={StaticResource InviteListsHeader}, Mode=TwoWay}"
+                  Checked="checkBoxEmailHeader_Checked" Unchecked="checkBoxEmailHeader_Unchecked" />
+        <!-- use HighlightTextBlock only to avoid accent color when selected -->
+        <TextBlock Text="{Binding EmailInstance.SelectAllText, Source={StaticResource InviteListsHeader}, Mode=TwoWay}"
+                   FontSize="32" VerticalAlignment="Center" Tapped="checkBoxEmailText_Tapped" RightTapped="checkBoxEmailText_RightTapped" />
+      </StackPanel>
+    </DataTemplate>
+
+    <ItemsPanelTemplate x:Key="listItemPanelTemplate">
+      <ItemsWrapGrid Orientation="Horizontal"/>
+    </ItemsPanelTemplate>
+
+    <DataTemplate x:Key="listItemTemplate">
+      <StackPanel Orientation="Horizontal" Margin="0,5,0,0"
+                  Visibility="{Binding Visibility}">
+        <CheckBox x:Name="checkBoxListItem" IsChecked="{Binding IsSelected, Mode=TwoWay}"
+                  VerticalAlignment="Top" Margin="0,-10,3,0"
+                  Foreground="{StaticResource TangoBackground}"
+                  Loaded="checkBoxListItem_Loaded" Unloaded="checkBoxListItem_Unloaded"/>
+        <StackPanel Tapped="textListItem_Tapped" RightTapped="textListItem_RightTapped">
+          <TextBlock Text="{Binding Name}" FontSize="32"
+                     Foreground="{StaticResource TangoForeground}"
+                     VerticalAlignment="Center" />
+          <TextBlock Text="{Binding InviteeInfo}" FontSize="24" Foreground="#FF8D8D8D" />
+        </StackPanel>
+      </StackPanel>
+    </DataTemplate>
+  </app:TangoEventPageBase.Resources>
+
+  <!--LayoutRoot is the root grid where all page content is placed-->
+  <Grid x:Name="LayoutRoot">
+    <Grid.RowDefinitions>
+      <RowDefinition Height="Auto"/>
+      <RowDefinition Height="*"/>
+    </Grid.RowDefinitions>
+
+    <!--TitlePanel contains the name of the application and page title-->
+    <StackPanel x:Name="TitlePanel" Grid.Row="0" Margin="0,0,0,-20">
+      <StackPanel Orientation="Horizontal">
+        <Image Source="ms-appx:///WinPhoneTango/Resources/logo_small.png" HorizontalAlignment="Left" VerticalAlignment="Top" Stretch="None"></Image>
+        <Rectangle Width="480" Fill="{StaticResource TangoOrangeBrush}" HorizontalAlignment="Left" VerticalAlignment="Stretch"></Rectangle>
+      </StackPanel>
+      <TextBlock Text="{Binding Localizedresources.invite_contact_prompt, Source={StaticResource LocalizedStrings}}"
+                 x:Name="PageTitle" Style="{StaticResource TangoTitleStyle}"
+                 HorizontalAlignment="Left" VerticalAlignment="Top" />
+      <TextBox x:Name="textBoxSearch" Visibility="Collapsed" TextChanged="textBoxSearch_TextChanged" />
+    </StackPanel>
+
+    <!--ContentPanel - place additional content here-->
+    <Pivot Title="" Grid.Row="1" Name="pivotInviteType" SelectionChanged="pivotInviteType_SelectionChanged">
+      <!--Pivot item all contacts-->
+      <PivotItem Header="{Binding Localizedresources.invite_sms, Source={StaticResource LocalizedStrings}}">
+        <Grid>
+          <ListView x:Name="listSelectorSms"
+                    Style="{StaticResource ContactListStyle}"
+                    ItemTemplate="{StaticResource listItemTemplate}"
+                    SelectionChanged="listSelectorSms_SelectionChanged"
+                    ScrollViewer.VerticalScrollMode="Enabled" />
+        </Grid>
+      </PivotItem>
+
+      <!--Pivot item tango contacts-->
+      <PivotItem 
+        x:Name="pivotItem"
+        Header="{Binding Localizedresources.invite_email, Source={StaticResource LocalizedStrings}}">
+        <Grid>
+          <ListView x:Name="listSelectorEmail"
+                    Style="{StaticResource ContactListStyle}"
+                    ItemTemplate="{StaticResource listItemTemplate}"
+                    SelectionChanged="listSelectorEmail_SelectionChanged"
+                    ScrollViewer.VerticalScrollMode="Enabled" />
+        </Grid>
+      </PivotItem>
+    </Pivot>
+
+    <TextBlock Grid.Row="1" x:Name="noSearchResultText" FontSize="22" Visibility="Collapsed"
+               Text="{Binding Localizedresources.no_search_result, Source={StaticResource LocalizedStrings}}"
+               Height="Auto" TextTrimming="None" TextWrapping="Wrap"
+               Width="456" VerticalAlignment="Top" Margin="0,140,0,0"/>
+
+    <ProgressBar Grid.Row="1" Height="8" HorizontalAlignment="Left"
+                 Margin="10,10,0,0" Name="waitingBar"
+                 VerticalAlignment="Center" Width="454"
+                 IsIndeterminate="True" Visibility="Collapsed" />
+  </Grid>
+</app:TangoEventPageBase>

@@ -1,0 +1,19 @@
+<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:WinPhoneTango">
+
+    <!-- Define theme colors and brushes for UWP -->
+    <Color x:Key="TangoOrangeColor">#FFFF461E</Color>
+    <Color x:Key="TangoForegroundColor">White</Color>
+    <Color x:Key="TangoBackgroundColor">Black</Color>
+    <Color x:Key="TangoChromeColor">#FF1F1F1F</Color>
+    <Color x:Key="TangoDisabledColor">#66FFFFFF</Color>
+    
+    <SolidColorBrush x:Key="TangoOrangeBrush" Color="{StaticResource TangoOrangeColor}" />
+    <SolidColorBrush x:Key="TangoForegroundBrush" Color="{StaticResource TangoForegroundColor}" />
+    <SolidColorBrush x:Key="TangoBackgroundBrush" Color="{StaticResource TangoBackgroundColor}" />
+    <SolidColorBrush x:Key="TangoChromeBrush" Color="{StaticResource TangoChromeColor}" />
+    <SolidColorBrush x:Key="TangoDisabledBrush" Color="{StaticResource TangoDisabledColor}" />
+    
+</ResourceDictionary>
