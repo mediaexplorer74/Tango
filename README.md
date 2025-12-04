@@ -6,7 +6,7 @@ My fast & dirty R.E. of Tango for WP7 app and making UWP app for Windows 10 Mobi
 
 
 ## Functional features
-- W10M "Astoria" (build 10240) compatibility (experimental... )
+- W10M 15063 SDK used
 - (not ready)
 
 ## Status
