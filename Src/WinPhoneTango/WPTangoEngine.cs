@@ -1,4 +1,4 @@
-﻿// Decompiled with JetBrains decompiler
+// Decompiled with JetBrains decompiler
 // Type: WinPhoneTango.WPTangoEngine
 // Assembly: WinPhoneTango, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
 // MVID: 30584BBB-B630-4C4B-8981-EFEC72A92E80
@@ -14,6 +14,6 @@ namespace WinPhoneTango
   [ComImport]
   public class WPTangoEngine
   {
-    public WPTangoEngine() {}
+    // ComImport types must not have constructors in managed code.
   }
 }

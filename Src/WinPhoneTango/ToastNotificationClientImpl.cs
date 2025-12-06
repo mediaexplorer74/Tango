@@ -1,4 +1,4 @@
-﻿// Decompiled with JetBrains decompiler
+// Decompiled with JetBrains decompiler
 // Type: WinPhoneTango.ToastNotificationClientImpl
 // Assembly: WinPhoneTango, Version=1.0.0, Culture=neutral, PublicKeyToken=null
 // MVID: 30584BBB-B630-4C4B-8981-EFEC72A92E80
@@ -9,6 +9,8 @@ using System;
 using Windows.UI.Xaml;
 using Tango.Messages;
 using Tango.Toolbox;
+using Windows.Networking.PushNotifications;
+using Windows.UI.Core;
 
 #nullable disable
 namespace WinPhoneTango
@@ -16,61 +18,91 @@ namespace WinPhoneTango
   public class ToastNotificationClientImpl : ToastNotificationClientBase
   {
     private const string CHANNEL_NAME = "Tango.Me.WinPhone.Channel";
+    private PushNotificationChannel _channel;
 
     public ToastNotificationClientImpl()
       : base("Tango.Me.WinPhone.Channel")
     {
     }
 
-    public new void Init(string serviceName)
+    public override void Init(string serviceName)
     {
-      base.Init(serviceName);
-      if (this.Type == ToastNotificationClientBase.ChannelType.ExistChannelExistUri)
-        Logger.Trace("The push channel already exists, just use it and get the Uri directly.");
-      else if (this.Type == ToastNotificationClientBase.ChannelType.ExistChannelNewUri)
+      // Create or retrieve WNS channel asynchronously
+      _ = InitAsync(serviceName);
+    }
+
+    private async System.Threading.Tasks.Task InitAsync(string serviceName)
+    {
+      try
       {
-        Logger.Trace("The push channel already exists, but can't find uri!!!");
+        _channel = await PushNotificationChannelManager.CreatePushNotificationChannelForApplicationAsync();
+        this.DeviceToken = _channel.Uri; // set via base class property (we'll add if missing via reflection later)
+        _channel.PushNotificationReceived += Channel_PushNotificationReceived;
+
+        Logger.Trace("WNS channel created: " + _channel.Uri);
+        UpdateDeviceToken();
       }
-      else
+      catch (Exception ex)
       {
-        if (this.Type != ToastNotificationClientBase.ChannelType.NewChannel)
-          return;
-        Logger.Trace("The push channel is not found, create a new one.");
+        Logger.Trace("Init push channel failed: " + ex.Message);
+        OnChannelErrorOccurred(new NotificationChannelErrorEventArgs { Error = ex });
       }
     }
 
-    protected override void UpdateDeviceToken()
+    private void Channel_PushNotificationReceived(PushNotificationChannel sender, PushNotificationReceivedEventArgs args)
     {
-      Logger.Trace("URI = " + this.DeviceToken);
-      if (this.DeviceToken.Length <= 0)
-        return;
-      TangoDeviceTokenPayload.Builder builder = TangoDeviceTokenPayload.CreateBuilder();
-      builder.SetDevicetoken(this.DeviceToken);
-      builder.SetDevicetokentype(DeviceTokenType.DEVICE_TOKEN_WINPHONE); // This might need to be updated to UWP token type
-      TangoEventPageBase.SendMessage((ISendableMessage) new TangoDeviceTokenMessage(TangoEventPageBase.GetNextSeqId(), builder));
-    }
+      // Simplified: extract toast contents
+      string text1 = string.Empty;
+      string text2 = string.Empty;
+      try
+      {
+        if (args.ToastNotification?.Content != null)
+        {
+          var nodes = args.ToastNotification.Content.GetElementsByTagName("text");
+          if (nodes.Count > 0) text1 = nodes[0].InnerText ?? string.Empty;
+          if (nodes.Count > 1) text2 = nodes[1].InnerText ?? string.Empty;
+        }
+      }
+      catch { }
 
-    protected override void ShellToastNotificationReceived(
-      string text1,
-      string text2,
-      string relativeUri)
-    {
-      Logger.Trace("A push message (" + text1 + " " + text2 + ") is received: " + relativeUri);
       var dispatcher = Window.Current?.Dispatcher;
       if (dispatcher != null)
       {
-        dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal, () =>
+        dispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>
         {
-          AppManager.Instance.PushEventManager.HandlePushEvent(text1, text2, relativeUri);
+          AppManager.Instance.PushEventManager.HandlePushEvent(text1, text2, _channel.Uri);
         });
       }
-      else
-        Logger.Trace("Dispatcher is not available, we have to skip the push message.");
     }
 
-    protected override void OnChannelErrorOccurred(object e) // Changed parameter type as NotificationChannelErrorEventArgs is WP7-specific
+    protected override void OnChannelErrorOccurred(NotificationChannelErrorEventArgs e)
     {
-      Logger.Trace("A push notification error occurred.");
+      Logger.Trace("A push notification error occurred: " + (e?.Error?.Message ?? "unknown"));
     }
+
+    protected virtual void UpdateDeviceToken()
+    {
+      if (_channel == null)
+      {
+        Logger.Trace("No channel available to update device token.");
+        return;
+      }
+      Logger.Trace("URI = " + _channel.Uri);
+      if (string.IsNullOrEmpty(_channel.Uri))
+        return;
+      TangoDeviceTokenPayload.Builder builder = TangoDeviceTokenPayload.CreateBuilder();
+      builder.SetDevicetoken(_channel.Uri);
+      builder.SetDevicetokentype(DeviceTokenType.DEVICE_TOKEN_WINPHONE);
+      TangoEventPageBase.SendMessage((ISendableMessage) new TangoDeviceTokenMessage(TangoEventPageBase.GetNextSeqId(), builder));
+    }
+
+    // Provide DeviceToken property to match previous usage
+    public string DeviceToken { get; private set; } = string.Empty;
+  }
+
+  // Simple shim for NotificationChannelErrorEventArgs used by the abstract base
+  public class NotificationChannelErrorEventArgs
+  {
+    public Exception Error { get; set; }
   }
 }

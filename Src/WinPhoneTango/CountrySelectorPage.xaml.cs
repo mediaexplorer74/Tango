@@ -1,4 +1,4 @@
-﻿// Decompiled with JetBrains decompiler
+// Decompiled with JetBrains decompiler
 // Type: WinPhoneTango.CountrySelectorPage
 // Assembly: WinPhoneTango, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
 // MVID: 30584BBB-B630-4C4B-8981-EFEC72A92E80
@@ -10,9 +10,10 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Controls.Primitives;
+using Windows.UI.Xaml;
+using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml;
+using Windows.UI.Xaml.Controls.Primitives;
 using System.Windows.Threading;
 
 #nullable disable

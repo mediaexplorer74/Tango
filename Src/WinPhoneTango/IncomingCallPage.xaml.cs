@@ -1,21 +1,21 @@
-﻿// Decompiled with JetBrains decompiler
+// Decompiled with JetBrains decompiler
 // Type: WinPhoneTango.IncomingCallPage
 // Assembly: WinPhoneTango, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
 // MVID: 30584BBB-B630-4C4B-8981-EFEC72A92E80
 // Assembly location: C:\Users\Admin\Desktop\RE\Tango\WinPhoneTango.dll
 
-using Microsoft.Phone.Controls;
+
 using sgiggle.xmpp;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Threading;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
+using Windows.UI.Xaml;
+using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Media;
+using Windows.UI.Xaml.Media.Imaging;
+using Windows.UI.Xaml.Navigation;
 using Tango.Drivers;
 using Tango.Messages;
 using Tango.Toolbox;

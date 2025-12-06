@@ -1,11 +1,11 @@
-﻿// Decompiled with JetBrains decompiler
+// Decompiled with JetBrains decompiler
 // Type: WinPhoneTango.InvitePage
 // Assembly: WinPhoneTango, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
 // MVID: 30584BBB-B630-4C4B-8981-EFEC72A92E80
 // Assembly location: C:\Users\Admin\Desktop\RE\Tango\WinPhoneTango.dll
 
-using Microsoft.Phone.Controls;
-using Microsoft.Phone.Shell;
+//using Microsoft.Phone.Controls;
+//using Microsoft.Phone.Shell;
 using sgiggle.xmpp;
 using System;
 using System.Collections;
@@ -13,15 +13,15 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Diagnostics;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Controls.Primitives;
-using System.Windows.Input;
-using System.Windows.Navigation;
+using Windows.UI.Xaml.Controls.Primitives;
+using Windows.UI.Xaml.Input;
+using Windows.UI.Xaml.Navigation;
 using Tango.Drivers;
 using Tango.Messages;
 using Tango.Toolbox;
 using Windows.ApplicationModel.Resources;
+using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml;
 
 #nullable disable
 namespace WinPhoneTango
@@ -460,8 +460,8 @@ namespace WinPhoneTango
     {
       if (!(sender is CheckBox checkBox))
         return;
-      ((ToggleButton) checkBox).Checked += new RoutedEventHandler(this.checkBoxListItem_Checked);
-      ((ToggleButton) checkBox).Unchecked += new RoutedEventHandler(this.checkBoxListItem_Unchecked);
+      checkBox.Checked += new RoutedEventHandler(this.checkBoxListItem_Checked);
+      checkBox.Unchecked += new RoutedEventHandler(this.checkBoxListItem_Unchecked);
     }
 
     private void checkBoxListItem_UnLoaded(object sender, RoutedEventArgs e)

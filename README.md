@@ -12,6 +12,8 @@ My fast & dirty R.E. of Tango for WP7 app and making UWP app for Windows 10 Mobi
 - INIT STATE: The project is in a very early stage and not yet available for distribution.
 - +- Pre-Aplha (100500 bugs still here!!! )
 
+## Screenshots
+![](/Images/sshot01.png)
 ![](/Images/sshot01.png)
 
 

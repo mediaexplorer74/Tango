@@ -179,6 +179,7 @@
     <Compile Include="SettingsPage.xaml.cs">
       <DependentUpon>SettingsPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="sgiggle\xmpp\EventShims.cs" />
     <Compile Include="TangoEventPageBase.cs" />
     <Compile Include="TipsPage.xaml.cs">
       <DependentUpon>TipsPage.xaml</DependentUpon>

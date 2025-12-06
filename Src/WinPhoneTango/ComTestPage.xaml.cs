@@ -1,4 +1,4 @@
-﻿// Decompiled with JetBrains decompiler
+// Decompiled with JetBrains decompiler
 // Type: WinPhoneTango.ComTestPage
 // Assembly: WinPhoneTango, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
 // MVID: 30584BBB-B630-4C4B-8981-EFEC72A92E80
@@ -7,7 +7,8 @@
 using System;
 using System.Diagnostics;
 using System.Windows;
-using System.Windows.Controls;
+using Windows.UI.Xaml;
+using Windows.UI.Xaml.Controls;
 
 #nullable disable
 namespace WinPhoneTango
@@ -32,7 +33,7 @@ namespace WinPhoneTango
     {
       AppManager.Instance.EngineCom.Engine.stop();
       AppManager.Instance.EngineCom.Engine.fini();
-      ((Page) this).NavigationService.Navigate(new Uri("/WelcomePage.xaml", UriKind.Relative));
+      this.NavigationService.Navigate(new Uri("/WelcomePage.xaml", UriKind.Relative));
     }
 
     

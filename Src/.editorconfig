@@ -1,0 +1,84 @@
+root = true
+
+[*]
+charset = utf-8
+end_of_line = crlf
+insert_final_newline = true
+trim_trailing_whitespace = true
+indent_style = space
+indent_size = 4
+max_line_length = 120
+
+[*.{cs,csx}]
+indent_style = space
+indent_size = 4
+trim_trailing_whitespace = true
+insert_final_newline = true
+charset = utf-8
+dotnet_sort_system_directives_first = true
+csharp_new_line_before_open_brace = all
+csharp_new_line_between_query_expression_clauses = true
+csharp_preferred_modifier_order = true
+
+# var preferences
+csharp_style_var_for_built_in_types = false:suggestion
+csharp_style_var_when_type_is_apparent = false:suggestion
+csharp_style_var_elsewhere = false:suggestion
+
+# this. preferences
+dotnet_style_qualification_for_field = false:suggestion
+dotnet_style_qualification_for_property = false:suggestion
+dotnet_style_qualification_for_method = false:suggestion
+dotnet_style_qualification_for_event = false:suggestion
+
+# expression-bodied members
+csharp_style_expression_bodied_methods = false:suggestion
+csharp_style_expression_bodied_constructors = false:suggestion
+csharp_style_expression_bodied_operators = false:suggestion
+csharp_style_expression_bodied_properties = false:suggestion
+
+# naming conventions
+dotnet_naming_rule.interfaces_start_with_I.severity = suggestion
+dotnet_naming_rule.interfaces_start_with_I.symbols = interfaces
+dotnet_naming_rule.interfaces_start_with_I.style = prefix_I
+
+dotnet_naming_symbols.interfaces.applicable_kinds = interface
+
+dotnet_naming_style.prefix_I.required_prefix = I
+dotnet_naming_style.prefix_I.capitalization = pascal_case
+
+# private fields use _camelCase
+dotnet_naming_rule.private_fields_underscore.severity = suggestion
+dotnet_naming_rule.private_fields_underscore.symbols = private_fields
+dotnet_naming_rule.private_fields_underscore.style = underscore_style
+
+dotnet_naming_symbols.private_fields.applicable_kinds = field
+dotnet_naming_symbols.private_fields.applicable_accessibilities = private
+
+dotnet_naming_style.underscore_style.required_prefix = _
+dotnet_naming_style.underscore_style.capitalization = camel_case
+
+[*.xaml]
+indent_style = space
+indent_size = 2
+max_line_length = 200
+
+# enforce UTF-8 for XAML and preserve CRLF for windows
+charset = utf-8
+end_of_line = crlf
+
+# Visual Studio designer and generated files - leave defaults
+[**/bin/**]
+max_line_length = off
+
+[**/obj/**]
+max_line_length = off
+
+# Tests
+[*.Tests.cs]
+indent_size = 4
+
+# Files to ignore for formatting rules
+[*.{png,jpg,gif,ico,svg}]
+trim_trailing_whitespace = false
+insert_final_newline = false

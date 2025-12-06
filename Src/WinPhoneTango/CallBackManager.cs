@@ -1,4 +1,4 @@
-﻿// Decompiled with JetBrains decompiler
+// Decompiled with JetBrains decompiler
 // Type: WinPhoneTango.CallBackManager
 // Assembly: WinPhoneTango, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
 // MVID: 30584BBB-B630-4C4B-8981-EFEC72A92E80
@@ -7,7 +7,8 @@
 using System;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
-using System.Windows;
+using Windows.UI.Core;
+using Windows.UI.Xaml;
 using Tango.Toolbox;
 
 #nullable disable
@@ -64,30 +65,28 @@ namespace WinPhoneTango
       this.DispatchNextQueueMessage();
     }
 
-    void IEventCallback.UIMessageCallback(int messageId, int size, byte[] data)
+    // Implement interface expected by native engine
+    public void HandleEvent(int messageId, int size, byte[] data)
     {
       if (App.IsQuiting)
         return;
-      Logger.Trace(string.Format("IEventCallback.UIMessageCallback() ui event is received from engine-core, id = {0}, size = {1}.", (object) messageId, (object) size));
-      if (AppManager.Instance.EventManager.CurrentPage != null && ((DependencyObject) AppManager.Instance.EventManager.CurrentPage).Dispatcher != null)
-        ((DependencyObject) AppManager.Instance.EventManager.CurrentPage).Dispatcher.BeginInvoke((Delegate) new CallBackManager.DispatchMessageDelegate(this.ReceiveEvent), new object[3]
-        {
-          (object) messageId,
-          (object) size,
-          (object) data
-        });
-      else if (Deployment.Current != null && ((DependencyObject) Deployment.Current).Dispatcher != null)
+      Logger.Trace(string.Format("IEventCallback.HandleEvent() ui event is received from engine-core, id = {0}, size = {1}.", (object) messageId, (object) size));
+
+      var page = AppManager.Instance.EventManager.CurrentPage as DependencyObject;
+      var dispatcher = page != null ? Windows.UI.Core.CoreWindow.GetForCurrentThread()?.Dispatcher : Window.Current?.Dispatcher;
+
+      if (page != null && (page as FrameworkElement)?.Dispatcher != null)
       {
-        ((DependencyObject) Deployment.Current).Dispatcher.BeginInvoke((Delegate) new CallBackManager.DispatchMessageDelegate(this.ReceiveEvent), new object[3]
-        {
-          (object) messageId,
-          (object) size,
-          (object) data
-        });
+        var fe = page as FrameworkElement;
+        fe.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () => ReceiveEvent(messageId, size, data));
+      }
+      else if (Window.Current != null && Window.Current.Dispatcher != null)
+      {
+        Window.Current.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () => ReceiveEvent(messageId, size, data));
       }
       else
       {
-        Logger.Trace("Dispather is not available, put the message back to the queue.");
+        Logger.Trace("Dispatcher is not available, put the message back to the queue.");
         lock (this._messageQueueLock)
           this._messageQueue.Enqueue(new CallBackManager.Message(messageId, data));
       }
@@ -104,7 +103,5 @@ namespace WinPhoneTango
         this.data = (byte[]) data.Clone();
       }
     }
-
-    private delegate void DispatchMessageDelegate(int messageId, int size, byte[] data);
   }
 }
