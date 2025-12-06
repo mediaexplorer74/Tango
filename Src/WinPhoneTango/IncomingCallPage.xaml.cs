@@ -19,7 +19,7 @@ using System.Windows.Navigation;
 using Tango.Drivers;
 using Tango.Messages;
 using Tango.Toolbox;
-using WinPhoneTango.Lang;
+using Windows.ApplicationModel.Resources;
 
 #nullable disable
 namespace WinPhoneTango
@@ -62,7 +62,7 @@ namespace WinPhoneTango
       if (way.Equals(IncomingCallPage.NAVIGATION_WAY_TYPE_PUSH))
       {
         this._pageType = new IncomingCallPage.PageType?(IncomingCallPage.PageType.Push);
-        this.callType.Text = LangResource.push_call_alert;
+        this.callType.Text = ResourceLoader.GetForCurrentView("LangResource").GetString("push_call_alert");
         ((UIElement) this.panelAnswerOrNot).Visibility = (Visibility) 0;
         ((UIElement) this.panelEndCall).Visibility = (Visibility) 1;
         string callerJid = ((Page) this).NavigationContext.QueryString.ContainsKey(IncomingCallPage.PUSH_PARAM_CALLER_JID) ? ((Page) this).NavigationContext.QueryString[IncomingCallPage.PUSH_PARAM_CALLER_JID] : string.Empty;
@@ -104,7 +104,7 @@ namespace WinPhoneTango
         {
           this.callerName.Text = AppManager.Instance.DataManager.CallingData.Displayname;
           this._pageType = new IncomingCallPage.PageType?(IncomingCallPage.PageType.RecvCall);
-          this.callType.Text = LangResource.receiver_call_alert;
+          this.callType.Text = ResourceLoader.GetForCurrentView("LangResource").GetString("receiver_call_alert");
           ((UIElement) this.panelAnswerOrNot).Visibility = (Visibility) 0;
           ((UIElement) this.panelEndCall).Visibility = (Visibility) 1;
         }
@@ -112,7 +112,7 @@ namespace WinPhoneTango
         {
           this.calleeName.Text = AppManager.Instance.DataManager.CallingData.Displayname;
           this._pageType = new IncomingCallPage.PageType?(IncomingCallPage.PageType.SendCall);
-          this.callType.Text = LangResource.call_status_pre_dialing;
+          this.callType.Text = ResourceLoader.GetForCurrentView("LangResource").GetString("call_status_pre_dialing");
           ((UIElement) this.panelAnswerOrNot).Visibility = (Visibility) 1;
           ((UIElement) this.panelEndCall).Visibility = (Visibility) 0;
         }
@@ -176,18 +176,18 @@ namespace WinPhoneTango
         case 35003:
         case 35021:
           Logger.Trace("Process Event SEND_CALL_ACCEPTED_TYPE");
-          this.callType.Text = LangResource.call_status_connecting;
+          this.callType.Text = ResourceLoader.GetForCurrentView("LangResource").GetString("call_status_connecting");
           ((UIElement) this.panelAnswerOrNot).Visibility = (Visibility) 1;
           ((UIElement) this.panelEndCall).Visibility = (Visibility) 0;
           break;
         case 35015:
-          this.callType.Text = LangResource.sender_call_alert;
+          this.callType.Text = ResourceLoader.GetForCurrentView("LangResource").GetString("sender_call_alert");
           break;
         case 35017:
           this.Init(IncomingCallPage.NAVIGATION_WAY_TYPE_RECEIVE);
           break;
         case 35019:
-          this.callType.Text = LangResource.call_error_title;
+          this.callType.Text = ResourceLoader.GetForCurrentView("LangResource").GetString("call_error_title");
           ((UIElement) this.callType).UpdateLayout();
           break;
       }
@@ -246,7 +246,7 @@ namespace WinPhoneTango
         return;
       this.WaitingForClickResult = true;
       this.Assert((object) AppManager.Instance.DataManager.CallingData);
-      this.callType.Text = LangResource.call_status_ended;
+      this.callType.Text = ResourceLoader.GetForCurrentView("LangResource").GetString("call_status_ended");
       IncomingCallPage.PageType? pageType = this._pageType;
       if ((pageType.GetValueOrDefault() != IncomingCallPage.PageType.Push ? 0 : (pageType.HasValue ? 1 : 0)) != 0)
       {

@@ -20,7 +20,6 @@ using Windows.System.Threading;
 using Tango.Drivers;
 using Tango.Messages;
 using Tango.Toolbox;
-using WinPhoneTango.Lang;
 
 #nullable disable
 namespace WinPhoneTango
@@ -331,7 +330,7 @@ namespace WinPhoneTango
         {
           // MessageBox is WP7-specific, replaced with UWP ContentDialog or MessageDialog
           // For now, just log the message
-          Logger.Trace(LangResource.contact_no_number_email_alert);
+          Logger.Trace(ResourceLoader.GetForCurrentView("LangResource").GetString("contact_no_number_email_alert"));
         }
         else
         {

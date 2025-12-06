@@ -16,7 +16,8 @@ using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Media.Imaging;
 using Windows.UI.Xaml.Navigation;
 using Tango.Messages;
-using WinPhoneTango.Lang;
+using Windows.ApplicationModel.Resources;
+
 
 #nullable disable
 namespace WinPhoneTango
@@ -44,11 +45,11 @@ namespace WinPhoneTango
     {
       string[] strArray = new string[5]
       {
-        LangResource.contacts_tab,
-        LangResource.call_log_tab,
-        LangResource.video_mail_tab,
-        LangResource.invite_tab,
-        LangResource.settings_tab
+        ResourceLoader.GetForCurrentView("LangResource").GetString("contacts_tab"),
+        ResourceLoader.GetForCurrentView("LangResource").GetString("call_log_tab"),
+        ResourceLoader.GetForCurrentView("LangResource").GetString("video_mail_tab"),
+        ResourceLoader.GetForCurrentView("LangResource").GetString("invite_tab"),
+        ResourceLoader.GetForCurrentView("LangResource").GetString("settings_tab")
       };
       int[] numArray = new int[5]
       {

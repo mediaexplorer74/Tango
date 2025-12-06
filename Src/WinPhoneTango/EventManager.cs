@@ -11,7 +11,7 @@ using Windows.UI.Popups;
 using Tango.Drivers;
 using Tango.Messages;
 using Tango.Toolbox;
-using WinPhoneTango.Lang;
+using Windows.ApplicationModel.Resources;
 
 #nullable disable
 namespace WinPhoneTango
@@ -138,9 +138,13 @@ namespace WinPhoneTango
         case 35019:
           AppManager.Instance.DataManager.LastError = OptionalPayload.ParseFrom(data).Message;
           this.SendEventToPage("IncomingCallPage", messageId);
-          MethodInfo method = typeof (LangResource).GetMethod("get_" + AppManager.Instance.DataManager.LastError.ToLower());
-          var dialog = new MessageDialog(((object) method != null ? method.Invoke((object) null, (object[]) null) as string : (string) null) ?? LangResource.call_error_msg, LangResource.call_error_title);
-          dialog.Commands.Add(new UICommand(LangResource.ok_button));
+          var resourceLoader = ResourceLoader.GetForCurrentView("LangResource");
+          var errorMessageKey = AppManager.Instance.DataManager.LastError.ToLower();
+          var errorMessage = resourceLoader.GetString(errorMessageKey);
+          if (string.IsNullOrEmpty(errorMessage))
+              errorMessage = resourceLoader.GetString("call_error_msg");
+          var dialog = new MessageDialog(errorMessage, resourceLoader.GetString("call_error_title"));
+          dialog.Commands.Add(new UICommand(resourceLoader.GetString("ok_button")));
           dialog.DefaultCommandIndex = 0;
           dialog.CancelCommandIndex = 0;
           var result = await dialog.ShowAsync();
@@ -219,13 +223,13 @@ namespace WinPhoneTango
           break;
         case 35051:
           this.SendEventToPage("RegisterPage", messageId);
-          var dialog = new MessageDialog(LangResource.account_verification_msg, LangResource.account_verification_title);
-          dialog.Commands.Add(new UICommand(LangResource.yes_button));
-          dialog.Commands.Add(new UICommand(LangResource.no_button));
+          var dialog = new MessageDialog(ResourceLoader.GetForCurrentView("LangResource").GetString("account_verification_msg"), ResourceLoader.GetForCurrentView("LangResource").GetString("account_verification_title"));
+          dialog.Commands.Add(new UICommand(ResourceLoader.GetForCurrentView("LangResource").GetString("yes_button")));
+          dialog.Commands.Add(new UICommand(ResourceLoader.GetForCurrentView("LangResource").GetString("no_button")));
           dialog.DefaultCommandIndex = 0;
           dialog.CancelCommandIndex = 1;
           var result = await dialog.ShowAsync();
-          if (result.Label == LangResource.yes_button)
+          if (result.Label == ResourceLoader.GetForCurrentView("LangResource").GetString("yes_button"))
           {
             TangoEventPageBase.SendMessage((ISendableMessage) new ValidationRequestMessage(TangoEventPageBase.GetNextSeqId(), OptionalPayload.CreateBuilder()));
             break;
@@ -257,8 +261,8 @@ namespace WinPhoneTango
           this.SendEventToPage("InviteContactPage", messageId);
           break;
         case 35065:
-          var dialog = new MessageDialog(OptionalPayload.ParseFrom(data).Message, LangResource.account_verification_title);
-          dialog.Commands.Add(new UICommand(LangResource.ok_button));
+          var dialog = new MessageDialog(OptionalPayload.ParseFrom(data).Message, ResourceLoader.GetForCurrentView("LangResource").GetString("account_verification_title"));
+          dialog.Commands.Add(new UICommand(ResourceLoader.GetForCurrentView("LangResource").GetString("ok_button")));
           dialog.DefaultCommandIndex = 0;
           dialog.CancelCommandIndex = 0;
           var result = await dialog.ShowAsync();
@@ -270,8 +274,8 @@ namespace WinPhoneTango
           AppManager.Instance.DataManager.CallingData = MediaSessionPayload.ParseFrom(data);
           if (AppManager.Instance.DataManager.CallingData != null)
           {
-            var dialog = new MessageDialog(AppManager.Instance.DataManager.CallingData.Displayname + LangResource.ignored_call_text, LangResource.call_status_ended);
-            dialog.Commands.Add(new UICommand(LangResource.ok_button));
+            var dialog = new MessageDialog(AppManager.Instance.DataManager.CallingData.Displayname + ResourceLoader.GetForCurrentView("LangResource").GetString("ignored_call_text"), ResourceLoader.GetForCurrentView("LangResource").GetString("call_status_ended"));
+            dialog.Commands.Add(new UICommand(ResourceLoader.GetForCurrentView("LangResource").GetString("ok_button")));
             dialog.DefaultCommandIndex = 0;
             dialog.CancelCommandIndex = 0;
             var result = await dialog.ShowAsync();
@@ -320,8 +324,8 @@ namespace WinPhoneTango
           break;
         case 35090:
           this.SendEventToPage("RegisterPage", messageId);
-          var dialog = new MessageDialog(LangResource.registration_failed_due_to_network, LangResource.registration_failed_title);
-          dialog.Commands.Add(new UICommand(LangResource.ok_button));
+          var dialog = new MessageDialog(ResourceLoader.GetForCurrentView("LangResource").GetString("registration_failed_due_to_network"), ResourceLoader.GetForCurrentView("LangResource").GetString("registration_failed_title"));
+          dialog.Commands.Add(new UICommand(ResourceLoader.GetForCurrentView("LangResource").GetString("ok_button")));
           dialog.DefaultCommandIndex = 0;
           dialog.CancelCommandIndex = 0;
           var result = await dialog.ShowAsync();
@@ -363,21 +367,21 @@ namespace WinPhoneTango
           break;
         case 35100:
           OtherRegisteredDevicePayload.Builder builder = OtherRegisteredDevicePayload.CreateBuilder();
-          var dialog = new MessageDialog(LangResource.other_device_msg, LangResource.other_device_title);
-          dialog.Commands.Add(new UICommand(LangResource.yes_button));
-          dialog.Commands.Add(new UICommand(LangResource.no_button));
+          var dialog = new MessageDialog(ResourceLoader.GetForCurrentView("LangResource").GetString("other_device_msg"), ResourceLoader.GetForCurrentView("LangResource").GetString("other_device_title"));
+          dialog.Commands.Add(new UICommand(ResourceLoader.GetForCurrentView("LangResource").GetString("yes_button")));
+          dialog.Commands.Add(new UICommand(ResourceLoader.GetForCurrentView("LangResource").GetString("no_button")));
           dialog.DefaultCommandIndex = 0;
           dialog.CancelCommandIndex = 1;
           var result = await dialog.ShowAsync();
-          if (result.Label == LangResource.yes_button)
+          if (result.Label == ResourceLoader.GetForCurrentView("LangResource").GetString("yes_button"))
             builder.SetRegistered(true);
           else
             builder.SetRegistered(false);
           TangoEventPageBase.SendMessage((ISendableMessage) new OtherRegisteredDeviceMessage(TangoEventPageBase.GetNextSeqId(), builder));
           break;
         case 35101:
-          var dialog = new MessageDialog(LangResource.other_device_del_msg, LangResource.other_device_del_title);
-          dialog.Commands.Add(new UICommand(LangResource.ok_button));
+          var dialog = new MessageDialog(ResourceLoader.GetForCurrentView("LangResource").GetString("other_device_del_msg"), ResourceLoader.GetForCurrentView("LangResource").GetString("other_device_del_title"));
+          dialog.Commands.Add(new UICommand(ResourceLoader.GetForCurrentView("LangResource").GetString("ok_button")));
           dialog.DefaultCommandIndex = 0;
           dialog.CancelCommandIndex = 0;
           var result = await dialog.ShowAsync();

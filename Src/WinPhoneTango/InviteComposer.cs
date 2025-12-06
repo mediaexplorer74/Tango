@@ -9,7 +9,7 @@ using Windows.ApplicationModel.Email;
 using sgiggle.xmpp;
 using System.Collections.Generic;
 using Tango.Toolbox;
-using WinPhoneTango.Lang;
+using Windows.ApplicationModel.Resources;
 
 #nullable disable
 namespace WinPhoneTango
@@ -36,7 +36,7 @@ namespace WinPhoneTango
           smsComposeTask2.To = smsComposeTask2.To + contactList[index].PhoneNumber.SubscriberNumber + ";";
         }
       }
-      smsComposeTask1.Body = LangResource.invite_sms_body;
+      smsComposeTask1.Body = ResourceLoader.GetForCurrentView("LangResource").GetString("invite_sms_body");
       smsComposeTask1.Show();
     }
 
@@ -57,8 +57,8 @@ namespace WinPhoneTango
           emailComposeTask2.To = emailComposeTask2.To + inviteeList[index].Email + ";";
         }
       }
-      emailComposeTask1.Subject = LangResource.invite_email_subject;
-      emailComposeTask1.Body = LangResource.invite_email_body;
+      emailComposeTask1.Subject = ResourceLoader.GetForCurrentView("LangResource").GetString("invite_email_subject");
+      emailComposeTask1.Body = ResourceLoader.GetForCurrentView("LangResource").GetString("invite_email_body");
       emailComposeTask1.Show();
     }
   }

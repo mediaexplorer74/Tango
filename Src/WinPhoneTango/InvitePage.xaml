@@ -81,7 +81,7 @@
         <Image Source="ms-appx:///WinPhoneTango/Resources/logo_small.png" HorizontalAlignment="Left" VerticalAlignment="Top" Stretch="None"></Image>
         <Rectangle Width="480" Fill="{StaticResource TangoOrangeBrush}" HorizontalAlignment="Left" VerticalAlignment="Stretch"></Rectangle>
       </StackPanel>
-      <TextBlock Text="{Binding Localizedresources.invite_contact_prompt, Source={StaticResource LocalizedStrings}}"
+      <TextBlock Text="{Binding LocalizedResources.GetString(invite_contact_prompt), Source={StaticResource LocalizedStrings}}"
                  x:Name="PageTitle" Style="{StaticResource TangoTitleStyle}"
                  HorizontalAlignment="Left" VerticalAlignment="Top" />
       <TextBox x:Name="textBoxSearch" Visibility="Collapsed" TextChanged="textBoxSearch_TextChanged" />
@@ -90,7 +90,7 @@
     <!--ContentPanel - place additional content here-->
     <Pivot Title="" Grid.Row="1" Name="pivotInviteType" SelectionChanged="pivotInviteType_SelectionChanged">
       <!--Pivot item all contacts-->
-      <PivotItem Header="{Binding Localizedresources.invite_sms, Source={StaticResource LocalizedStrings}}">
+      <PivotItem Header="{Binding LocalizedResources.GetString(invite_sms), Source={StaticResource LocalizedStrings}}">
         <Grid>
           <ListView x:Name="listSelectorSms"
                     Style="{StaticResource ContactListStyle}"
@@ -103,7 +103,7 @@
       <!--Pivot item tango contacts-->
       <PivotItem 
         x:Name="pivotItem"
-        Header="{Binding Localizedresources.invite_email, Source={StaticResource LocalizedStrings}}">
+        Header="{Binding LocalizedResources.GetString(invite_email), Source={StaticResource LocalizedStrings}}">
         <Grid>
           <ListView x:Name="listSelectorEmail"
                     Style="{StaticResource ContactListStyle}"
@@ -115,7 +115,7 @@
     </Pivot>
 
     <TextBlock Grid.Row="1" x:Name="noSearchResultText" FontSize="22" Visibility="Collapsed"
-               Text="{Binding Localizedresources.no_search_result, Source={StaticResource LocalizedStrings}}"
+               Text="{Binding LocalizedResources.GetString(no_search_result), Source={StaticResource LocalizedStrings}}"
                Height="Auto" TextTrimming="None" TextWrapping="Wrap"
                Width="456" VerticalAlignment="Top" Margin="0,140,0,0"/>
 

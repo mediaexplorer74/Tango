@@ -6,13 +6,11 @@ My fast & dirty R.E. of Tango for WP7 app and making UWP app for Windows 10 Mobi
 
 
 ## Functional features
-- W10M 15063 SDK used
-- (not ready)
+- Min. Win SDK used: 15063
 
 ## Status
 - INIT STATE: The project is in a very early stage and not yet available for distribution.
 - +- Pre-Aplha (100500 bugs still here!!! )
-- Build -> failed (not ready)
 
 ![](/Images/sshot01.png)
 
@@ -32,15 +30,12 @@ My fast & dirty R.E. of Tango for WP7 app and making UWP app for Windows 10 Mobi
 - Win. SDK used: 19041
 - Min. Win SDK used: 15063
 
-## References
-- https://tango.me/
-
 
 ## ..
 As is. No support. RnD it yourself.
 
 ## .
-[M][E] Dec, 5 2025
+[M][E] Dec, 6 2025
 
 ![](/Images/footer.png)
 

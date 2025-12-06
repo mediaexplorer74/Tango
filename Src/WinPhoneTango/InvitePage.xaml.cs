@@ -21,7 +21,7 @@ using System.Windows.Navigation;
 using Tango.Drivers;
 using Tango.Messages;
 using Tango.Toolbox;
-using WinPhoneTango.Lang;
+using Windows.ApplicationModel.Resources;
 
 #nullable disable
 namespace WinPhoneTango
@@ -54,11 +54,11 @@ namespace WinPhoneTango
       this._pivotItems[1] = ((PresentationFrameworkCollection<object>) this.pivotInviteType.Items)[1] as PivotItem;
       TangoEventPageBase.SendMessage((ISendableMessage) new InviteSMSSelectionMessage(TangoEventPageBase.GetNextSeqId(), OptionalPayload.CreateBuilder()));
       this.buttonPreview = this.ApplicationBar.Buttons[0] as ApplicationBarIconButton;
-      this.buttonPreview.Text = LangResource.preview_button;
+      this.buttonPreview.Text = ResourceLoader.GetForCurrentView("LangResource").GetString("preview_button");
       this.buttonSearch = this.ApplicationBar.Buttons[1] as ApplicationBarIconButton;
-      this.buttonSearch.Text = LangResource.menuitem_search;
+      this.buttonSearch.Text = ResourceLoader.GetForCurrentView("LangResource").GetString("menuitem_search");
       this.buttonCancel = this.ApplicationBar.Buttons[2] as ApplicationBarIconButton;
-      this.buttonCancel.Text = LangResource.cancel_button;
+      this.buttonCancel.Text = ResourceLoader.GetForCurrentView("LangResource").GetString("cancel_button");
       this.InitAppBarController();
     }
 
@@ -79,10 +79,10 @@ namespace WinPhoneTango
     {
       this._selectedSmsCount = 0;
       this._selectedEmailCount = 0;
-      InviteListHeader.SMSInstance.SelectAllText = LangResource.select_all;
+      InviteListHeader.SMSInstance.SelectAllText = ResourceLoader.GetForCurrentView("LangResource").GetString("select_all");
       InviteListHeader.SMSInstance.IsSelectAllChecked = false;
       InviteListHeader.SMSInstance.SelectAllVisible = (Visibility) 1;
-      InviteListHeader.EmailInstance.SelectAllText = LangResource.select_all;
+      InviteListHeader.EmailInstance.SelectAllText = ResourceLoader.GetForCurrentView("LangResource").GetString("select_all");
       InviteListHeader.EmailInstance.IsSelectAllChecked = false;
       InviteListHeader.EmailInstance.SelectAllVisible = (Visibility) 1;
       this.LoadSmsContactList();
@@ -171,7 +171,7 @@ namespace WinPhoneTango
         if (AppManager.Instance.DataManager.SmsContactList != null)
         {
           ((UIElement) this.PageTitle).Visibility = (Visibility) 0;
-          this.PageTitle.Text = AppManager.Instance.DataManager.SmsContactList.ContactsCount == 0 ? LangResource.invite_contact_empty_prompt : LangResource.invite_contact_prompt;
+          this.PageTitle.Text = AppManager.Instance.DataManager.SmsContactList.ContactsCount == 0 ? ResourceLoader.GetForCurrentView("LangResource").GetString("invite_contact_empty_prompt") : ResourceLoader.GetForCurrentView("LangResource").GetString("invite_contact_prompt");
           if (AppManager.Instance.DataManager.SmsContactList.ContactsCount == 0)
             this.AppBarController.DisableButton(this.buttonSearch);
           else
@@ -183,7 +183,7 @@ namespace WinPhoneTango
         }
         else
         {
-          this.PageTitle.Text = LangResource.invite_contact_empty_prompt;
+          this.PageTitle.Text = ResourceLoader.GetForCurrentView("LangResource").GetString("invite_contact_empty_prompt");
           this.AppBarController.DisableButton(this.buttonSearch);
           this.StartLoadingProgress(this.waitingBar, timeout: 30);
         }
@@ -198,7 +198,7 @@ namespace WinPhoneTango
         if (AppManager.Instance.DataManager.EmailContactList != null)
         {
           ((UIElement) this.PageTitle).Visibility = (Visibility) 0;
-          this.PageTitle.Text = AppManager.Instance.DataManager.EmailContactList.ContactCount == 0 ? LangResource.invite_contact_empty_prompt : LangResource.invite_contact_prompt;
+          this.PageTitle.Text = AppManager.Instance.DataManager.EmailContactList.ContactCount == 0 ? ResourceLoader.GetForCurrentView("LangResource").GetString("invite_contact_empty_prompt") : ResourceLoader.GetForCurrentView("LangResource").GetString("invite_contact_prompt");
           if (AppManager.Instance.DataManager.EmailContactList.ContactCount == 0)
             this.AppBarController.DisableButton(this.buttonSearch);
           else
@@ -210,7 +210,7 @@ namespace WinPhoneTango
         }
         else
         {
-          this.PageTitle.Text = LangResource.invite_contact_empty_prompt;
+          this.PageTitle.Text = ResourceLoader.GetForCurrentView("LangResource").GetString("invite_contact_empty_prompt");
           this.AppBarController.DisableButton(this.buttonSearch);
           this.StartLoadingProgress(this.waitingBar, timeout: 30);
         }
@@ -255,8 +255,8 @@ namespace WinPhoneTango
         this._contactFilter.ClearResult();
         this._contactFilter.OnFilterUpdate -= new ContactsFilter.OnFilterUpdateDelegate(this.OnFilterUpdate);
         this.textBoxSearch.Text = string.Empty;
-        this._pivotItems[0].Header = (object) LangResource.invite_sms;
-        this._pivotItems[1].Header = (object) LangResource.invite_email;
+        this._pivotItems[0].Header = (object) ResourceLoader.GetForCurrentView("LangResource").GetString("invite_sms");
+        this._pivotItems[1].Header = (object) ResourceLoader.GetForCurrentView("LangResource").GetString("invite_email");
         switch (renderListIndex)
         {
           case 0:
@@ -374,7 +374,7 @@ namespace WinPhoneTango
     {
       if (IsToSelect)
       {
-        InviteListHeader.SMSInstance.SelectAllText = LangResource.unselect_all;
+        InviteListHeader.SMSInstance.SelectAllText = ResourceLoader.GetForCurrentView("LangResource").GetString("unselect_all");
         InviteListHeader.SMSInstance.IsSelectAllChecked = true;
         this._selectedSmsCount = 0;
         for (int index = 0; index < this._displaySmsContacts.Count; ++index)
@@ -390,7 +390,7 @@ namespace WinPhoneTango
       }
       else
       {
-        InviteListHeader.SMSInstance.SelectAllText = LangResource.select_all;
+        InviteListHeader.SMSInstance.SelectAllText = ResourceLoader.GetForCurrentView("LangResource").GetString("select_all");
         InviteListHeader.SMSInstance.IsSelectAllChecked = false;
         for (int index = 0; index < this._displaySmsContacts.Count; ++index)
         {
@@ -420,7 +420,7 @@ namespace WinPhoneTango
     {
       if (IsToSelect)
       {
-        InviteListHeader.EmailInstance.SelectAllText = LangResource.unselect_all;
+        InviteListHeader.EmailInstance.SelectAllText = ResourceLoader.GetForCurrentView("LangResource").GetString("unselect_all");
         InviteListHeader.EmailInstance.IsSelectAllChecked = true;
         this._selectedEmailCount = 0;
         for (int index = 0; index < this._displayEmailContacts.Count; ++index)
@@ -433,7 +433,7 @@ namespace WinPhoneTango
       }
       else
       {
-        InviteListHeader.EmailInstance.SelectAllText = LangResource.select_all;
+        InviteListHeader.EmailInstance.SelectAllText = ResourceLoader.GetForCurrentView("LangResource").GetString("select_all");
         InviteListHeader.EmailInstance.IsSelectAllChecked = false;
         for (int index = 0; index < this._displayEmailContacts.Count; ++index)
           this._displayEmailContacts[index].IsSelected = false;
@@ -481,7 +481,7 @@ namespace WinPhoneTango
         if (this._selectedSmsCount >= count)
         {
           this._selectedSmsCount = count;
-          InviteListHeader.SMSInstance.SelectAllText = LangResource.unselect_all;
+          InviteListHeader.SMSInstance.SelectAllText = ResourceLoader.GetForCurrentView("LangResource").GetString("unselect_all");
           InviteListHeader.SMSInstance.IsSelectAllChecked = true;
         }
       }
@@ -492,7 +492,7 @@ namespace WinPhoneTango
         if (this._selectedEmailCount >= count)
         {
           this._selectedEmailCount = count;
-          InviteListHeader.EmailInstance.SelectAllText = LangResource.unselect_all;
+          InviteListHeader.EmailInstance.SelectAllText = ResourceLoader.GetForCurrentView("LangResource").GetString("unselect_all");
           InviteListHeader.EmailInstance.IsSelectAllChecked = true;
         }
       }
@@ -507,7 +507,7 @@ namespace WinPhoneTango
         if (this._selectedSmsCount > 0)
           return;
         this._selectedSmsCount = 0;
-        InviteListHeader.SMSInstance.SelectAllText = LangResource.select_all;
+        InviteListHeader.SMSInstance.SelectAllText = ResourceLoader.GetForCurrentView("LangResource").GetString("select_all");
         InviteListHeader.SMSInstance.IsSelectAllChecked = false;
         this.ShowPreviewPanel(false);
       }
@@ -519,7 +519,7 @@ namespace WinPhoneTango
         if (this._selectedEmailCount > 0)
           return;
         this._selectedEmailCount = 0;
-        InviteListHeader.EmailInstance.SelectAllText = LangResource.select_all;
+        InviteListHeader.EmailInstance.SelectAllText = ResourceLoader.GetForCurrentView("LangResource").GetString("select_all");
         InviteListHeader.EmailInstance.IsSelectAllChecked = false;
         this.ShowPreviewPanel(false);
       }
@@ -702,12 +702,12 @@ label_9:
         if (this._contactFilter.HasUncheckedItem)
         {
           InviteListHeader.SMSInstance.IsSelectAllChecked = false;
-          InviteListHeader.SMSInstance.SelectAllText = LangResource.select_all;
+          InviteListHeader.SMSInstance.SelectAllText = ResourceLoader.GetForCurrentView("LangResource").GetString("select_all");
         }
         else
         {
           InviteListHeader.SMSInstance.IsSelectAllChecked = true;
-          InviteListHeader.SMSInstance.SelectAllText = LangResource.unselect_all;
+          InviteListHeader.SMSInstance.SelectAllText = ResourceLoader.GetForCurrentView("LangResource").GetString("unselect_all");
         }
         ((UIElement) this.listSelectorSms).UpdateLayout();
       }
@@ -718,12 +718,12 @@ label_9:
         if (this._contactFilter.HasUncheckedItem)
         {
           InviteListHeader.EmailInstance.IsSelectAllChecked = false;
-          InviteListHeader.EmailInstance.SelectAllText = LangResource.select_all;
+          InviteListHeader.EmailInstance.SelectAllText = ResourceLoader.GetForCurrentView("LangResource").GetString("select_all");
         }
         else
         {
           InviteListHeader.EmailInstance.IsSelectAllChecked = true;
-          InviteListHeader.EmailInstance.SelectAllText = LangResource.unselect_all;
+          InviteListHeader.EmailInstance.SelectAllText = ResourceLoader.GetForCurrentView("LangResource").GetString("unselect_all");
         }
         ((UIElement) this.listSelectorEmail).UpdateLayout();
       }

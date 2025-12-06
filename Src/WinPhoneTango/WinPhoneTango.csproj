@@ -164,19 +164,15 @@
     </Compile>
     <Compile Include="IWPMessageSender.cs" />
     <Compile Include="IWPTangoEngine.cs" />
-    <Compile Include="Localization.cs" />
     <Compile Include="LocalizedStrings.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="DataTypes.cs" />
     <Compile Include="ISendableMessage.cs" />
-    <Compile Include="MissingTypes.cs" />
     <Compile Include="Payloads.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="PushEventManager.cs" />
-    <Compile Include="Drivers.cs" />
-    <Compile Include="IWPLogger.cs" />
-    <Compile Include="IDevInfoDriver.cs" />
     <Compile Include="RegisterPage.xaml.cs">
       <DependentUpon>RegisterPage.xaml</DependentUpon>
     </Compile>
@@ -187,8 +183,8 @@
     <Compile Include="TipsPage.xaml.cs">
       <DependentUpon>TipsPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ToastNotificationClientBase.cs" />
     <Compile Include="ToastNotificationClientImpl.cs" />
-    <Compile Include="UWPCompatibility.cs" />
     <Compile Include="Utils.cs" />
     <Compile Include="VideoMailPage.xaml.cs">
       <DependentUpon>VideoMailPage.xaml</DependentUpon>
@@ -202,11 +198,13 @@
     <Compile Include="WPMessageSender.cs" />
     <Compile Include="WPTangoEngine.cs" />
     <Compile Include="sgiggle\xmpp\ChatState.cs" />
-    <Compile Include="sgiggle\xmpp\Interfaces.cs" />
+    <Compile Include="sgiggle\xmpp\Classes.cs" />
     <Compile Include="sgiggle\xmpp\Drivers.cs" />
     <Compile Include="sgiggle\xmpp\Payloads.cs" />
     <Compile Include="sgiggle\xmpp\XmppClient.cs" />
     <Compile Include="sgiggle\xmpp\MessageType.cs" />
+    <Compile Include="IDevInfoDriver.cs" />
+    <Compile Include="IWPLogger.cs" />
   </ItemGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest">
@@ -373,6 +371,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="ThemeStyle.xaml" />
     <Page Include="VideoMailPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

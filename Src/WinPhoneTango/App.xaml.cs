@@ -16,7 +16,6 @@ using Windows.UI.Xaml.Controls;
 using Tango.Drivers;
 using Tango.Messages;
 using Tango.Toolbox;
-using WinPhoneTango.Lang;
 
 #nullable disable
 namespace WinPhoneTango

@@ -1,7 +1,6 @@
-using System;
-
 namespace sgiggle.xmpp
 {
+    // Payload classes
     public class RegisterUserPayload
     {
         public static RegisterUserPayload CreateBuilder()

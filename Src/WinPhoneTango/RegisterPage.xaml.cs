@@ -20,7 +20,7 @@ using Windows.UI.Xaml.Navigation;
 using Tango.Drivers;
 using Tango.Messages;
 using Tango.Toolbox;
-using WinPhoneTango.Lang;
+using Windows.ApplicationModel.Resources;
 
 #nullable disable
 namespace WinPhoneTango
@@ -118,7 +118,7 @@ namespace WinPhoneTango
       if (this.textBoxEmail.Text.Length > 0 && !new Regex(RegisterPage.EmailValidationRegex).IsMatch(this.textBoxEmail.Text))
       {
         // Use UWP equivalent for MessageBox
-        var dialog = new Windows.UI.Popups.MessageDialog(LangResource.email_invalid_msg);
+        var dialog = new Windows.UI.Popups.MessageDialog(ResourceLoader.GetForCurrentView("LangResource").GetString("email_invalid_msg"));
         dialog.ShowAsync();
       }
       else

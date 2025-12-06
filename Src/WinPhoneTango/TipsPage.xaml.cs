@@ -12,7 +12,7 @@ using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
 using Tango.Messages;
-using WinPhoneTango.Lang;
+using Windows.ApplicationModel.Resources;
 
 #nullable disable
 namespace WinPhoneTango
@@ -27,7 +27,7 @@ namespace WinPhoneTango
       this.InitializeComponent();
       // In UWP, use HttpClient for web requests instead of WebRequest
       this.StartLoadingProgress(this.waitingBar);
-      this.webViewTips.Source = new Uri(LangResource.tips_url);
+      this.webViewTips.Source = new Uri(ResourceLoader.GetForCurrentView("LangResource").GetString("tips_url"));
       this.webViewTips.NavigationCompleted += WebViewTips_NavigationCompleted;
     }
 

@@ -66,13 +66,6 @@ namespace WinPhoneTango
         }
     }
     
-    public class OperationalAlert
-    {
-        public static OperationalAlert CreateBuilder()
-        {
-            return new OperationalAlert();
-        }
-    }
     
     public class InCallAlertPayload
     {
@@ -87,6 +80,19 @@ namespace WinPhoneTango
         public static AudioModePayload CreateBuilder()
         {
             return new AudioModePayload();
+        }
+        
+        public class Builder
+        {
+            public AudioModePayload Build()
+            {
+                return new AudioModePayload();
+            }
+            
+            public Builder SetDoLogin(bool doLogin)
+            {
+                return this;
+            }
         }
     }
     
@@ -104,37 +110,23 @@ namespace WinPhoneTango
         {
             return new DeviceTokenPayload();
         }
-    }
-    
-    public class InviteEmailSelectionPayload
-    {
-        public static InviteEmailSelectionPayload CreateBuilder()
+        
+        public class Builder
         {
-            return new InviteEmailSelectionPayload();
-        }
-    }
-    
-    public class InviteOptionsPayload
-    {
-        public static InviteOptionsPayload CreateBuilder()
-        {
-            return new InviteOptionsPayload();
-        }
-    }
-    
-    public class InviteSMSSelectedPayload
-    {
-        public static InviteSMSSelectedPayload CreateBuilder()
-        {
-            return new InviteSMSSelectedPayload();
-        }
-    }
-    
-    public class InviteEmailComposerPayload
-    {
-        public static InviteEmailComposerPayload CreateBuilder()
-        {
-            return new InviteEmailComposerPayload();
+            public DeviceTokenPayload Build()
+            {
+                return new DeviceTokenPayload();
+            }
+            
+            public Builder SetDeviceToken(string token)
+            {
+                return this;
+            }
+            
+            public Builder SetDeviceTokenType(int type)
+            {
+                return this;
+            }
         }
     }
 }

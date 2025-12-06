@@ -4,9 +4,6 @@
 // MVID: 30584BBB-B630-4C4B-8981-EFEC72A92E80
 // Assembly location: C:\Users\Admin\Desktop\RE\Tango\WinPhoneTango.dll
 
-using Windows.Phone.Media.Capture;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 using sgiggle.xmpp;
 using System;
 using System.ComponentModel;
@@ -23,7 +20,7 @@ using Windows.UI.Xaml.Shapes;
 using Tango.Drivers;
 using Tango.Messages;
 using Tango.Toolbox;
-using WinPhoneTango.Lang;
+using Windows.ApplicationModel.Resources;
 
 #nullable disable
 namespace WinPhoneTango
@@ -101,9 +98,9 @@ namespace WinPhoneTango
       this._spriteBatch = new SpriteBatch(SharedGraphicsDeviceManager.Current.GraphicsDevice);
       this._remoteVideoFrameTexture = this.NewRemoteVideoFrameTexture(this._remoteVideoFrameWidth, this._remoteVideoFrameHeight);
       this._blackBackground = new Texture2D(SharedGraphicsDeviceManager.Current.GraphicsDevice, 1, 1, false, SurfaceFormat.Bgr565);
-      this.bigButtonMute.Text = LangResource.mute_button;
-      this.bigButtonVideo.Text = LangResource.video_button;
-      this.bigButtonSpeaker.Text = LangResource.speaker_button;
+      this.bigButtonMute.Text = ResourceLoader.GetForCurrentView("LangResource").GetString("mute_button");
+      this.bigButtonVideo.Text = ResourceLoader.GetForCurrentView("LangResource").GetString("video_button");
+      this.bigButtonSpeaker.Text = ResourceLoader.GetForCurrentView("LangResource").GetString("speaker_button");
       ((Control) this.bigButtonVideo).IsEnabled = false;
       ((Control) this.bigButtonSpeaker).IsEnabled = false;
       this.ResetPreviewElements();
@@ -292,7 +289,7 @@ namespace WinPhoneTango
       }
     }
 
-    protected override void OnNavigatedTo(NavigationEventArgs e)
+    protected override void OnNavigatedTo(Windows.UI.Xaml.Navigation.NavigationEventArgs e)
     {
       this.SetPreferredBackBufferFormat();
       GraphicsDeviceExtensions.SetSharingMode(SharedGraphicsDeviceManager.Current.GraphicsDevice, true);
@@ -301,7 +298,7 @@ namespace WinPhoneTango
       base.OnNavigatedTo(e);
     }
 
-    protected override void OnNavigatedFrom(NavigationEventArgs e)
+    protected override void OnNavigatedFrom(Windows.UI.Xaml.Navigation.NavigationEventArgs e)
     {
       this.Assert((object) this._gameTimer);
       this._gameTimer.Stop();
@@ -384,7 +381,7 @@ namespace WinPhoneTango
       this._spriteBatch.Draw(this._blackBackground, this._blackBackgroundRect, Color.White);
       if (this._audioPanel.IsVisible)
       {
-        this.textPastTime.Text = !this._pastTimeStopWatch.IsRunning ? (this._isCallFinished ? LangResource.call_status_ended : LangResource.call_status_connecting) : this._pastTimeStopWatch.Elapsed.ToString("mm\\:ss");
+        this.textPastTime.Text = !this._pastTimeStopWatch.IsRunning ? (this._isCallFinished ? ResourceLoader.GetForCurrentView("LangResource").GetString("call_status_ended") : ResourceLoader.GetForCurrentView("LangResource").GetString("call_status_connecting")) : this._pastTimeStopWatch.Elapsed.ToString("mm\\:ss");
         this._audioPanel.DrawIfVisible();
       }
       else
