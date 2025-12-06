@@ -1,4 +1,4 @@
-﻿// Decompiled with JetBrains decompiler
+// Decompiled with JetBrains decompiler
 // Type: Tango.Toolbox.Logger
 // Assembly: Tango.Toolbox, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
 // MVID: 66659FBC-C0D0-4E90-B77B-A803101F884B
@@ -17,6 +17,11 @@ namespace Tango.Toolbox
     private static Socket _socket;
     private static string _serverName;
     private static int _serverPort;
+
+    public void Trace(StringBuilder log)
+    {
+        //
+    }
 
     public void DebugWriteLine(StringBuilder log)
     {

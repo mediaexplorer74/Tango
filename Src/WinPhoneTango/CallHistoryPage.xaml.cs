@@ -1,4 +1,4 @@
-﻿// Decompiled with JetBrains decompiler
+// Decompiled with JetBrains decompiler
 // Type: WinPhoneTango.CallHistoryPage
 // Assembly: WinPhoneTango, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
 // MVID: 30584BBB-B630-4C4B-8981-EFEC72A92E80
@@ -14,9 +14,9 @@ using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
-using Tango.Messages;
+//using Tango.Messages;
 using Tango.Toolbox;
-using WinPhoneTango.Lang;
+//using WinPhoneTango.Lang;
 
 #nullable disable
 namespace WinPhoneTango
@@ -32,7 +32,7 @@ namespace WinPhoneTango
     {
       this.IsGoBackable = true;
       this.InitializeComponent();
-      ((FrameworkElement) this).Loaded += new RoutedEventHandler(this.OnLoaded);
+      this.Loaded += new RoutedEventHandler(this.OnLoaded);
     }
 
     protected override void OnNavigatedTo(NavigationEventArgs e) => base.OnNavigatedTo(e);

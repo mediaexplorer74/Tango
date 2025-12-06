@@ -11,12 +11,12 @@
   <Identity
     Name="ME.TangoV1"
     Publisher="CN=Admin"
-    Version="1.0.0.0" />
+    Version="1.0.100.0" />
 
   <mp:PhoneIdentity PhoneProductId="6c753c74-16af-4fd6-8849-37a605a6dbfc" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
 
   <Properties>
-    <DisplayName>Tango v1.0 pre-alpha</DisplayName>
+    <DisplayName>Tango v1.0.100 pre-alpha</DisplayName>
     <PublisherDisplayName>Admin</PublisherDisplayName>
     <Logo>Assets\StoreLogo.png</Logo>
   </Properties>
@@ -34,7 +34,7 @@
       Executable="$targetnametoken$.exe"
       EntryPoint="WinPhoneTango.App">
       <uap:VisualElements
-        DisplayName="Tango 1.0 pre-alpha"
+        DisplayName="Tango 1.0.100 pre-alpha"
         Square150x150Logo="Assets\Square150x150Logo.png"
         Square44x44Logo="Assets\Square44x44Logo.png"
         Description="WinPhoneTango"

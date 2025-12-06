@@ -181,6 +181,14 @@
     </Compile>
     <Compile Include="sgiggle\xmpp\EventShims.cs" />
     <Compile Include="TangoEventPageBase.cs" />
+    <Compile Include="XMPP\ITangoEngine.cs" />
+    <Compile Include="XMPP\PureEngineCom.cs" />
+    <Compile Include="XMPP\PureMessageSender.cs" />
+    <Compile Include="XMPP\PureTangoEngine.cs" />
+    <Compile Include="XMPP\TangoMessageHandler.cs" />
+    <Compile Include="XMPP\TangoXmppClient.cs" />
+    <Compile Include="XMPP\TestMessageSender.cs" />
+    <Compile Include="XMPP\XmppServiceManager.cs" />
     <Compile Include="TipsPage.xaml.cs">
       <DependentUpon>TipsPage.xaml</DependentUpon>
     </Compile>
@@ -413,7 +421,7 @@
     <ProjectReference Include="..\Tango.Toolbox\Tango.Toolbox.csproj">
       <Project>{47207b77-5dc5-41ae-9920-ff4d484b167d}</Project>
       <Name>Tango.Toolbox</Name>
-    </ProjectReference>
+    </ProjectReference>    
   </ItemGroup>
   <ItemGroup>
     <PRIResource Include="Strings\ru-RU\LangResource.resw" />

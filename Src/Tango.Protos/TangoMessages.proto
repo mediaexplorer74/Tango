@@ -1,0 +1,196 @@
+syntax = "proto3";
+
+package Tango.Messages;
+
+// Message types enumeration
+enum MessageType {
+  UNKNOWN = 0;
+  LOGIN = 1;
+  LOGOUT = 2;
+  MESSAGE = 3;
+  PRESENCE = 4;
+  IQ = 5;
+  REGISTER_USER = 6;
+  MEDIA_SESSION = 7;
+  CONTACTS = 8;
+  CALL_ENTRIES = 9;
+  INVITE_EMAIL_SELECTION = 10;
+  INVITE_OPTIONS = 11;
+  INVITE_SMS_SELECTED = 12;
+  INVITE_EMAIL_COMPOSER = 13;
+  OPERATIONAL_ALERT = 14;
+  IN_CALL_ALERT = 15;
+  AUDIO_MODE = 16;
+  VIDEO_MODE = 17;
+  DEVICE_TOKEN = 18;
+}
+
+// Base message structure
+message TangoMessage {
+  MessageType type = 1;
+  int64 timestamp = 2;
+  bytes payload = 3;
+}
+
+// Register user payload
+message RegisterUserPayload {
+  string username = 1;
+  string password = 2;
+  string email = 3;
+  string phone_number = 4;
+  string display_name = 5;
+}
+
+// Media session payload
+message MediaSessionPayload {
+  string session_id = 1;
+  string caller_id = 2;
+  string callee_id = 3;
+  MediaType media_type = 4;
+  SessionState state = 5;
+}
+
+enum MediaType {
+  AUDIO = 0;
+  VIDEO = 1;
+}
+
+enum SessionState {
+  INITIATED = 0;
+  CONNECTED = 1;
+  DISCONNECTED = 2;
+  FAILED = 3;
+}
+
+// Contacts payload
+message ContactsPayload {
+  repeated Contact contacts = 1;
+}
+
+message Contact {
+  string id = 1;
+  string name = 2;
+  string phone_number = 3;
+  string email = 4;
+  bool is_online = 5;
+}
+
+// Call entries payload
+message CallEntriesPayload {
+  repeated CallEntry entries = 1;
+}
+
+message CallEntry {
+  string id = 1;
+  string caller_id = 2;
+  string callee_id = 3;
+  int64 timestamp = 4;
+  CallType type = 5;
+  CallStatus status = 6;
+  int32 duration = 7; // in seconds
+}
+
+enum CallType {
+  OUTGOING = 0;
+  INCOMING = 1;
+  MISSED = 2;
+}
+
+enum CallStatus {
+  SUCCESS = 0;
+  FAILED = 1;
+  BUSY = 2;
+  NO_ANSWER = 3;
+}
+
+// Invite email selection payload
+message InviteEmailSelectionPayload {
+  repeated string email_addresses = 1;
+}
+
+// Invite options payload
+message InviteOptionsPayload {
+  bool sms_enabled = 1;
+  bool email_enabled = 2;
+  string custom_message = 3;
+}
+
+// Invite SMS selected payload
+message InviteSMSSelectedPayload {
+  repeated string phone_numbers = 1;
+}
+
+// Invite email composer payload
+message InviteEmailComposerPayload {
+  repeated string recipients = 1;
+  string subject = 2;
+  string body = 3;
+}
+
+// Operational alert payload
+message OperationalAlert {
+  string title = 1;
+  string message = 2;
+  AlertType type = 3;
+  int64 expiry_time = 4;
+}
+
+enum AlertType {
+  INFO = 0;
+  WARNING = 1;
+  ERROR = 2;
+  CRITICAL = 3;
+}
+
+// In-call alert payload
+message InCallAlertPayload {
+  string message = 1;
+  AlertAction action = 2;
+}
+
+enum AlertAction {
+  NONE = 0;
+  ACCEPT = 1;
+  REJECT = 2;
+  IGNORE = 3;
+}
+
+// Audio mode payload
+message AudioModePayload {
+  bool do_login = 1;
+  AudioDevice input_device = 2;
+  AudioDevice output_device = 3;
+  int32 volume_level = 4; // 0-100
+}
+
+enum AudioDevice {
+  DEFAULT = 0;
+  SPEAKER = 1;
+  EARPIECE = 2;
+  BLUETOOTH = 3;
+}
+
+// Video mode payload
+message VideoModePayload {
+  bool enabled = 1;
+  VideoResolution resolution = 2;
+  int32 bitrate = 3; // in kbps
+}
+
+enum VideoResolution {
+  LOW = 0;     // 320x240
+  MEDIUM = 1;  // 640x480
+  HIGH = 2;    // 1280x720
+}
+
+// Device token payload
+message DeviceTokenPayload {
+  string device_token = 1;
+  DeviceTokenType token_type = 2;
+}
+
+enum DeviceTokenType {
+  APNS = 0;  // Apple Push Notification Service
+  FCM = 1;   // Firebase Cloud Messaging
+  WNS = 2;   // Windows Notification Service
+}

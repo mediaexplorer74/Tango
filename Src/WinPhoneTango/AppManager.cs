@@ -7,6 +7,7 @@
 using sgiggle.xmpp;
 using Tango.Messages;
 using Tango.Toolbox;
+using Tango.XMPP; // Added reference to our XMPP implementation
 
 #nullable disable
 namespace WinPhoneTango
@@ -19,7 +20,8 @@ namespace WinPhoneTango
     private SingletonHolder<EventManager> _eventManager = new SingletonHolder<EventManager>();
     private SingletonHolder<PushEventManager> _pushEventManager = new SingletonHolder<PushEventManager>();
     private SingletonHolder<CallBackManager> _callBackManager = new SingletonHolder<CallBackManager>();
-    private SingletonHolder<EngineCom> _engineCom = new SingletonHolder<EngineCom>();
+    private SingletonHolder<PureEngineCom> _engineCom = new SingletonHolder<PureEngineCom>(); // Changed to PureEngineCom
+    private SingletonHolder<TangoMessageHandler> _tangoMessageHandler = new SingletonHolder<TangoMessageHandler>(); // Added Tango message handler
 
     public static AppManager Instance
     {
@@ -37,8 +39,11 @@ namespace WinPhoneTango
 
     public bool IsStarted { get; private set; }
 
-    public void Start(bool isDoLogin = true)
+    public async void Start(bool isDoLogin = true)
     {
+      // Initialize XMPP service
+      await XmppServiceManager.Instance.InitializeAsync("tango.im", 5222, "username", "password");
+      
       if (this.IsStarted || !this.EngineCom.IsEngineStarted)
         return;
       Logger.Trace("[AppManager] Send messages to start the engine.");
@@ -49,7 +54,13 @@ namespace WinPhoneTango
       AppManager.Instance.ToastClient.Init(this.EngineCom.PushServiceName);
     }
 
-    public void Stop() => this.IsStarted = false;
+    public async void Stop()
+    {
+      // Shutdown XMPP service
+      await XmppServiceManager.Instance.ShutdownAsync();
+      
+      this.IsStarted = false;
+    }
 
     public DataManager DataManager => this._dataManager.Instance;
 
@@ -61,6 +72,9 @@ namespace WinPhoneTango
 
     public CallBackManager CallBackManager => this._callBackManager.Instance;
 
-    public EngineCom EngineCom => this._engineCom.Instance;
+    public PureEngineCom EngineCom => this._engineCom.Instance; // Changed return type
+    
+    // Added property for Tango message handler
+    public TangoMessageHandler TangoMessageHandler => this._tangoMessageHandler.Instance;
   }
 }
